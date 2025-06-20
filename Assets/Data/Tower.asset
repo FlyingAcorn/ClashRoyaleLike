@@ -9,6 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3272d600ac6cf4747a2ab9b5c2faaf8c, type: 3}
-  m_Name: Agent
+  m_Script: {fileID: 11500000, guid: dd41a29e841fb1b408e6bbd0237bed5f, type: 3}
+  m_Name: Tower
   m_EditorClassIdentifier: 
+  isFlying: 0
+  isRanged: 1
+  maxHealth: 200
+  damage: 10
+  attackSpeed: 1
+  speed: 0
+  rangeRadius: 0
