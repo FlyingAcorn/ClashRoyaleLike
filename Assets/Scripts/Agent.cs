@@ -76,7 +76,7 @@ public abstract class Agent : MonoBehaviour
    {
        FindClosestTarget();
        var currentTarget = target;
-       while (currentTarget == target || CheckAttackRange() )
+       while (currentTarget == target || FindClosestTarget() > _rangeRadius )
        {
            myAgent.destination = target.transform.position;
            FindClosestTarget();
@@ -86,7 +86,7 @@ public abstract class Agent : MonoBehaviour
        yield return null;
    }
 
-   private void FindClosestTarget()
+   private float FindClosestTarget()
    {
        Entity minDistanceEntity = null;
        var minDistance = Mathf.Infinity;
@@ -100,13 +100,9 @@ public abstract class Agent : MonoBehaviour
            }
        }
        target = minDistanceEntity;
+       return minDistance;
    }
-
-   private bool CheckAttackRange()
-   {
-
-       return true; // şimdilik koydun
-   }
+   
 }
 
 
