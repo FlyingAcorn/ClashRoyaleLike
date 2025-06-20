@@ -6,4 +6,10 @@ using UnityEngine;
 public class AgentScriptableObj : ScriptableObject
 {
     
+    public bool isRanged;
+    public int health;
+    public int damage;
+    public int attackSpeed;
+    public int speed;
+    public int stopDistance;
 }
