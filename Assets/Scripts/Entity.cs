@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected EntityScriptableObj entityClassType;
+    [SerializeField] protected Animator myAnimator;
 
     private bool _isFlying;
     public bool isAlly;
@@ -27,12 +28,13 @@ public class Entity : MonoBehaviour
 
     private void OnTriggerEnter(Collider trigger)
     {
-        if (trigger.transform.TryGetComponent(out Weapon weapon))
+        if (trigger.transform.TryGetComponent(out Weapon weapon) && weapon.owner.isAlly != isAlly)
         {
             Health -= weapon.owner.entityClassType.damage;
+            myAnimator.SetTrigger("isHit");
             if (Health <= 0)
             {
-                Debug.Log("dead"+gameObject.name);
+                DeathSequence();
                 if (isAlly)
                 {
                     EntityManager.Instance.allies.Remove(this);
@@ -41,8 +43,9 @@ public class Entity : MonoBehaviour
                 {
                     EntityManager.Instance.enemies.Remove(this);
                 }
-                gameObject.SetActive(false);
+                
             }
         }
     }
+    protected abstract void DeathSequence();
 }

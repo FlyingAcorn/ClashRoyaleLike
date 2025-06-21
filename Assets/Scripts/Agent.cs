@@ -8,24 +8,17 @@ using UnityEngine.Serialization;
 public abstract class Agent : Entity
 {
    [SerializeField] private NavMeshAgent myAgent;
+   [SerializeField] private Rigidbody myBody;
+   
 
    private Coroutine _currentCoroutine;
-   [SerializeField] private Entity target;
-   
+   [SerializeField] protected Entity target;
 
    protected override void Awake()
    {
        base.Awake();
        myAgent.speed = entityClassType.speed;
    }
-   /*State machine yapacaksın mantığı
-    Find Closest Target
-    MoveTo Target (range icindeyse skip )
-    Act  (diğer adıma geçmeden once actSpeed kadar bekleyecek)
-    FindClosest Target
-   -----------------------
-   can 0 olursa bool true olacak ve her şeyi birakacak olme animasyonu yapıp olecek */
-   
    public enum AgentBehaviour
    {
        MovingToClosestTarget,
@@ -34,7 +27,7 @@ public abstract class Agent : Entity
    }
    public static event Action<AgentBehaviour> OnAgentStateChanged;
    public AgentBehaviour currentBehaviour;
-   
+
    private void Start()
    {
        UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
@@ -46,19 +39,22 @@ public abstract class Agent : Entity
        
        if (newState == AgentBehaviour.MovingToClosestTarget)
        {
+           myAnimator.SetBool("isMoving",true);
            _currentCoroutine = StartCoroutine(AgentMovement());
        }
 
        if (newState == AgentBehaviour.Acting)
        {
+           myAnimator.SetBool("isMoving",false);
            _currentCoroutine = StartCoroutine(Acting());
        }
 
        if (newState == AgentBehaviour.Dying)
        {
-           
+           myAgent.isStopped = true;
+           myAnimator.SetTrigger("isDead");
+           //timer ekle ve sil
        }
-       
        OnAgentStateChanged?.Invoke(newState);
    }
 
@@ -97,9 +93,12 @@ public abstract class Agent : Entity
        target = minDistanceEntity;
        return minDistance;
    }
-
+   protected override void DeathSequence()
+   {
+       UpdateAgentState(AgentBehaviour.Dying);
+   }
    protected abstract IEnumerator Acting();
-
+  
 }
 
 

@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Tower : Entity
 {
-    private bool _isDead;
+    protected override void DeathSequence()
+    {
+        throw new NotImplementedException();
+    }
     /* find the closest target in range
     act*/
 }
