@@ -13,8 +13,9 @@ public abstract class Agent : Entity
    [SerializeField] private Entity target;
    
 
-   private void Awake()
+   protected override void Awake()
    {
+       base.Awake();
        myAgent.speed = entityClassType.speed;
    }
    /*State machine yapacaksın mantığı
@@ -29,6 +30,7 @@ public abstract class Agent : Entity
    {
        MovingToClosestTarget,
        Acting,
+       Dying
    }
    public static event Action<AgentBehaviour> OnAgentStateChanged;
    public AgentBehaviour currentBehaviour;
@@ -51,6 +53,11 @@ public abstract class Agent : Entity
        {
            _currentCoroutine = StartCoroutine(Acting());
        }
+
+       if (newState == AgentBehaviour.Dying)
+       {
+           
+       }
        
        OnAgentStateChanged?.Invoke(newState);
    }
@@ -63,7 +70,6 @@ public abstract class Agent : Entity
        {
            myAgent.destination = target.transform.position;
            FindClosestTarget();
-           Debug.Log(FindClosestTarget());
            if (FindClosestTarget()<= entityClassType.rangeRadius)
            {
                myAgent.isStopped = true;

@@ -9,21 +9,40 @@ public class Entity : MonoBehaviour
 
     private bool _isFlying;
     public bool isAlly;
+    [SerializeField]private int health;
+
     private int Health
     {
-        get => Health;
-        set => Health = Health+value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
+        get => health;
+        set { health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value; }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _isFlying = entityClassType.isFlying;
-        
-    }
+        Health = entityClassType.maxHealth;
+        Debug.Log(Health);
 
+    }
 
     private void OnTriggerEnter(Collider trigger)
     {
-        
+        if (trigger.transform.TryGetComponent(out Weapon weapon))
+        {
+            Health -= weapon.owner.entityClassType.damage;
+            if (Health <= 0)
+            {
+                Debug.Log("dead"+gameObject.name);
+                if (isAlly)
+                {
+                    EntityManager.Instance.allies.Remove(this);
+                }
+                else
+                {
+                    EntityManager.Instance.enemies.Remove(this);
+                }
+                gameObject.SetActive(false);
+            }
+        }
     }
 }
