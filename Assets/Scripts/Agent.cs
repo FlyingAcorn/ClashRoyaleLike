@@ -5,36 +5,18 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 
-public abstract class Agent : MonoBehaviour
+public abstract class Agent : Entity
 {
-   [SerializeField] private EntityScriptableObj entityClassType;
    [SerializeField] private NavMeshAgent myAgent;
 
    private Coroutine _currentCoroutine;
-   private bool _isDead;
-   private bool _isRanged;
-   private int _health;
-   private int _damage;
-   private int _actSpeed;
-   private float _rangeRadius;
-   
    [SerializeField] private Entity target;
    
 
    private void Awake()
    {
-       SetValues();
-   }
-
-   private void SetValues()
-   {
-       _isRanged = entityClassType.isRanged;
-       _damage = entityClassType.damage;
-       _actSpeed = entityClassType.attackSpeed;
-       _rangeRadius = entityClassType.rangeRadius;
        myAgent.speed = entityClassType.speed;
    }
-
    /*State machine yapacaksın mantığı
     Find Closest Target
     MoveTo Target (range icindeyse skip )
@@ -53,10 +35,10 @@ public abstract class Agent : MonoBehaviour
    
    private void Start()
    {
-       UpdateGameState(AgentBehaviour.MovingToClosestTarget);
+       UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
    }
     
-   public void UpdateGameState(AgentBehaviour newState)
+   public void UpdateAgentState(AgentBehaviour newState)
    {
        currentBehaviour = newState;
        
@@ -67,6 +49,7 @@ public abstract class Agent : MonoBehaviour
 
        if (newState == AgentBehaviour.Acting)
        {
+           _currentCoroutine = StartCoroutine(Acting());
        }
        
        OnAgentStateChanged?.Invoke(newState);
@@ -74,35 +57,43 @@ public abstract class Agent : MonoBehaviour
 
    private IEnumerator AgentMovement()
    {
+       myAgent.isStopped = false;
        FindClosestTarget();
-       var currentTarget = target;
-       while (currentTarget == target || FindClosestTarget() > _rangeRadius )
+       while ( currentBehaviour == AgentBehaviour.MovingToClosestTarget )
        {
            myAgent.destination = target.transform.position;
            FindClosestTarget();
+           Debug.Log(FindClosestTarget());
+           if (FindClosestTarget()<= entityClassType.rangeRadius)
+           {
+               myAgent.isStopped = true;
+               UpdateAgentState( AgentBehaviour.Acting);
+           }
            yield return null;
        }
-       
        yield return null;
    }
 
-   private float FindClosestTarget()
+   protected float FindClosestTarget()
    {
        Entity minDistanceEntity = null;
        var minDistance = Mathf.Infinity;
-       foreach (var enemy in EntityManager.Instance.enemies)
+       
+       foreach (var entity in isAlly ? EntityManager.Instance.enemies : EntityManager.Instance.allies)
        {
-          float dis = Vector3.Distance(enemy.transform.position, transform.position);
+          float dis = Vector3.Distance(entity.transform.position, transform.position);
            if (dis < minDistance)
            {
                minDistance = dis;
-               minDistanceEntity = enemy;
+               minDistanceEntity = entity;
            }
        }
        target = minDistanceEntity;
        return minDistance;
    }
-   
+
+   protected abstract IEnumerator Acting();
+
 }
 
 

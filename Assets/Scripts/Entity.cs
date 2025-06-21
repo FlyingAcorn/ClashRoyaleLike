@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField] private EntityScriptableObj entityClassType;
+    [SerializeField] protected EntityScriptableObj entityClassType;
 
     private bool _isFlying;
-    private int _maxHealth;
-    private int _remainingHealth;
     public bool isAlly;
+    private int Health
+    {
+        get => Health;
+        set => Health = Health+value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
+    }
 
     private void Awake()
     {
         _isFlying = entityClassType.isFlying;
-        _maxHealth = entityClassType.maxHealth;
+        
     }
 
 
