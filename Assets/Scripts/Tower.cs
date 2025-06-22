@@ -61,11 +61,12 @@ public class Tower : Entity
 
     private IEnumerator Acting()
     {
-        var direction = target.transform.position - transform.position + new Vector3(0, 5, 0);
+        var direction = target.transform.position - transform.position + new Vector3(0, 10, 0); // y değeri offset
         var arrow = Instantiate(projectile, transform.position+new Vector3(0,5,0),Quaternion.LookRotation(direction));
         arrow.owner = this;
         var time = FindClosestTarget() / 20; // 20 is speedper pixel
-        arrow.transform.DOMove(target.transform.position, time);
+        var _targetsPos = target.transform.position;
+        arrow.transform.DOMove(_targetsPos+new Vector3(0, 1, 0),time);
         yield return new WaitForSeconds(entityClassType.attackSpeed);
         if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
         {

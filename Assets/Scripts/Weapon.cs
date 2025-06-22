@@ -11,8 +11,7 @@ public class Weapon : MonoBehaviour
 
     public void OnHit()
     {
-        myCollider.enabled = false;
-        DOVirtual.DelayedCall(3, (() => { gameObject.SetActive(false); }));
+        gameObject.SetActive(false);
     }
 
 }
