@@ -101,8 +101,11 @@ MonoBehaviour:
   entityClassType: {fileID: 11400000, guid: fafc57ee95d4da2419144d98aa220b66, type: 2}
   myAnimator: {fileID: 0}
   Collider: {fileID: 3450560886208113383}
+  target: {fileID: 0}
   isAlly: 1
   health: 0
+  projectile: {fileID: 6341622329534193129, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
+  currentBehaviour: 0
 --- !u!64 &3450560886208113383
 MeshCollider:
   m_ObjectHideFlags: 0

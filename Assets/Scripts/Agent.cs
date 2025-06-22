@@ -10,10 +10,7 @@ public abstract class Agent : Entity
 {
    [SerializeField] private NavMeshAgent myAgent;
    [SerializeField] private Rigidbody myBody;
-   
-
    protected Coroutine currentCoroutine;
-   [SerializeField] protected Entity target;
 
    protected override void Awake()
    {
@@ -78,24 +75,6 @@ public abstract class Agent : Entity
            yield return null;
        }
        yield return null;
-   }
-
-   protected float FindClosestTarget()
-   {
-       Entity minDistanceEntity = null;
-       var minDistance = Mathf.Infinity;
-       
-       foreach (var entity in isAlly ? EntityManager.Instance.enemies : EntityManager.Instance.allies)
-       {
-          float dis = Vector3.Distance(entity.transform.position, transform.position);
-           if (dis < minDistance)
-           {
-               minDistance = dis;
-               minDistanceEntity = entity;
-           }
-       }
-       target = minDistanceEntity;
-       return minDistance;
    }
    protected override void DeathSequence()
    {

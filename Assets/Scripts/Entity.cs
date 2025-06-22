@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    [SerializeField] protected EntityScriptableObj entityClassType;
+    [SerializeField] public EntityScriptableObj entityClassType;
     [SerializeField] protected Animator myAnimator;
     [SerializeField] private Collider Collider;
+    [SerializeField] protected Entity target;
     
 
     private bool _isFlying;
@@ -32,6 +34,10 @@ public abstract class Entity : MonoBehaviour
     {
         if (trigger.transform.TryGetComponent(out Weapon weapon) && weapon.owner.isAlly != isAlly)
         {
+            if (weapon.owner.entityClassType.isRanged)
+            {
+                weapon.OnHit();
+            }
             //myAnimator.SetTrigger("isHit");
             Health -= weapon.owner.entityClassType.damage;
             weapon.owner.GotHitSequence();
@@ -50,6 +56,24 @@ public abstract class Entity : MonoBehaviour
                 
             }
         }
+    }
+    
+    protected float FindClosestTarget()
+    {
+        Entity minDistanceEntity = null;
+        var minDistance = Mathf.Infinity;
+       
+        foreach (var entity in isAlly ? EntityManager.Instance.enemies : EntityManager.Instance.allies)
+        {
+            float dis = Vector3.Distance(entity.transform.position, transform.position);
+            if (dis < minDistance)
+            {
+                minDistance = dis;
+                minDistanceEntity = entity;
+            }
+        }
+        target = minDistanceEntity;
+        return minDistance;
     }
     protected abstract void DeathSequence();
     protected abstract void GotHitSequence();
