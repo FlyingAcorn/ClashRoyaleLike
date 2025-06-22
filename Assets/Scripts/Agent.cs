@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -11,7 +12,7 @@ public abstract class Agent : Entity
    [SerializeField] private Rigidbody myBody;
    
 
-   private Coroutine _currentCoroutine;
+   protected Coroutine currentCoroutine;
    [SerializeField] protected Entity target;
 
    protected override void Awake()
@@ -40,20 +41,23 @@ public abstract class Agent : Entity
        if (newState == AgentBehaviour.MovingToClosestTarget)
        {
            myAnimator.SetBool("isMoving",true);
-           _currentCoroutine = StartCoroutine(AgentMovement());
+           currentCoroutine = StartCoroutine(AgentMovement());
        }
 
        if (newState == AgentBehaviour.Acting)
        {
            myAnimator.SetBool("isMoving",false);
-           _currentCoroutine = StartCoroutine(Acting());
+           currentCoroutine = StartCoroutine(Acting());
        }
 
        if (newState == AgentBehaviour.Dying)
        {
+           StopCoroutine(currentCoroutine);
            myAgent.isStopped = true;
            myAnimator.SetTrigger("isDead");
-           //timer ekle ve sil
+           AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
+           var firstClipDuration = clipInfos[0].clip.averageDuration;
+           DOVirtual.DelayedCall(firstClipDuration+2, (() => { gameObject.SetActive(false); }));
        }
        OnAgentStateChanged?.Invoke(newState);
    }

@@ -30,8 +30,10 @@ public abstract class Entity : MonoBehaviour
     {
         if (trigger.transform.TryGetComponent(out Weapon weapon) && weapon.owner.isAlly != isAlly)
         {
+            //myAnimator.SetTrigger("isHit");
             Health -= weapon.owner.entityClassType.damage;
-            myAnimator.SetTrigger("isHit");
+            weapon.owner.GotHitSequence();
+            Debug.Log(weapon.owner.gameObject.name+"  "+gameObject.name);
             if (Health <= 0)
             {
                 DeathSequence();
@@ -48,4 +50,5 @@ public abstract class Entity : MonoBehaviour
         }
     }
     protected abstract void DeathSequence();
+    protected abstract void GotHitSequence();
 }

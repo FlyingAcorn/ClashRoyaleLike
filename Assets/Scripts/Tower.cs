@@ -9,6 +9,11 @@ public class Tower : Entity
     {
         throw new NotImplementedException();
     }
+
+    protected override void GotHitSequence()
+    {
+        throw new NotImplementedException();
+    }
     /* find the closest target in range
     act*/
 }
