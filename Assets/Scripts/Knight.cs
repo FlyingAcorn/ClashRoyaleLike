@@ -19,7 +19,7 @@ public class Knight : Agent
         myAnimator.SetBool("isAttacking",false);
         hitCollider.enabled = false;
         yield return new WaitForSeconds(entityClassType.attackSpeed);
-        if (FindClosestTarget()> entityClassType.rangeRadius)
+        if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
         {
             UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
         }

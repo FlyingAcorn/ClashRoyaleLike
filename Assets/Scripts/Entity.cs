@@ -7,6 +7,8 @@ public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected EntityScriptableObj entityClassType;
     [SerializeField] protected Animator myAnimator;
+    [SerializeField] private Collider Collider;
+    
 
     private bool _isFlying;
     public bool isAlly;
@@ -51,4 +53,9 @@ public abstract class Entity : MonoBehaviour
     }
     protected abstract void DeathSequence();
     protected abstract void GotHitSequence();
+
+    public float ColliderOffset()
+    {
+        return Collider.bounds.size.x*0.5f;
+    }
 }

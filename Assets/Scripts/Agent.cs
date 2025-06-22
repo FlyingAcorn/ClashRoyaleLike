@@ -70,7 +70,7 @@ public abstract class Agent : Entity
        {
            myAgent.destination = target.transform.position;
            FindClosestTarget();
-           if (FindClosestTarget()<= entityClassType.rangeRadius)
+           if (FindClosestTarget()-target.ColliderOffset()<= entityClassType.rangeRadius)
            {
                myAgent.isStopped = true;
                UpdateAgentState( AgentBehaviour.Acting);
