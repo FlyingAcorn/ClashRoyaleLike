@@ -166,11 +166,11 @@ MonoBehaviour:
   entityClassType: {fileID: 11400000, guid: bc3685ed3bf056343b35a4f7fc084cde, type: 2}
   myAnimator: {fileID: 7558705226324308413}
   Collider: {fileID: 3293086794585566746}
+  target: {fileID: 0}
   isAlly: 1
   health: 10
   myAgent: {fileID: 1560984510405331847}
   myBody: {fileID: 3694149056401955131}
-  target: {fileID: 0}
   currentBehaviour: 0
   hitCollider: {fileID: 3869150696464890537}
 --- !u!95 &7558705226324308413
@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 4623161955593346083}
+  myCollider: {fileID: 0}
 --- !u!1 &1364162890966509183
 GameObject:
   m_ObjectHideFlags: 0

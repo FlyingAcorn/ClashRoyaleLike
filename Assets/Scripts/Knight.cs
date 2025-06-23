@@ -30,7 +30,7 @@ public class Knight : Agent
         yield return null;
     }
 
-    protected override void GotHitSequence()
+    protected override void GotHitSequence() // biri vurulunca vuranın classındaki bu method çalışıyor (bunun yerine iframe verebilirsin)
     {
         myAnimator.SetBool("isAttacking",false);
         hitCollider.enabled = false;

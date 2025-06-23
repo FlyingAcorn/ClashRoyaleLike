@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd41a29e841fb1b408e6bbd0237bed5f, type: 3}
-  m_Name: Knight
+  m_Name: Archer
   m_EditorClassIdentifier: 
   isFlying: 0
-  isRanged: 0
-  maxHealth: 100
+  isRanged: 1
+  maxHealth: 50
   damage: 20
   attackSpeed: 1
   speed: 1
-  rangeRadius: 2.2
+  rangeRadius: 10
