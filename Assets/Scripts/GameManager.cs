@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        UpdateGameState(GameState.MainMenu);
+        UpdateGameState(GameState.Play);
     }
     
     public void UpdateGameState(GameState newState)
@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
 
         if (newState == GameState.Play)
         {
-            
+            //EntityManager.Instance.InitialSort();
         }
 
         if (newState == GameState.Settings)
