@@ -16,6 +16,6 @@ MonoBehaviour:
   isRanged: 0
   maxHealth: 100
   damage: 20
-  attackSpeed: 1
+  attackSpeed: 3
   speed: 1
   rangeRadius: 2.2

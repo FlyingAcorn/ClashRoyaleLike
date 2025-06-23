@@ -9,8 +9,8 @@ public class EntityScriptableObj : ScriptableObject
     public bool isRanged;
     public int maxHealth;
     public int damage;
-    public int attackSpeed;
-    public int speed;
+    public float attackSpeed;
+    public float speed;
     public float rangeRadius;
 }
 

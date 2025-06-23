@@ -10,9 +10,7 @@ public class Archer : Agent
     protected override IEnumerator Acting()
     {
         myAnimator.SetBool("isAttacking",true);
-        AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
-        var firstClipDuration = clipInfos[0].clip.averageDuration;
-        transform.DOLookAt(target.transform.position,firstClipDuration*0.25f,AxisConstraint.Y);
+        transform.DOLookAt(target.transform.position,0.25f,AxisConstraint.Y);
         yield return new WaitForSeconds(2.20f);
         yield return new WaitForSeconds(entityClassType.attackSpeed);
         if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
@@ -25,13 +23,7 @@ public class Archer : Agent
         }
         yield return null;
     }
-
-    protected override void GotHitSequence()
-    {
-       //okcuda gereksiz
-    }
-
-    public void Shoot()
+    public void Shoot() // animEvent
     {
         var direction = target.transform.position - transform.position + new Vector3(0, 10, 0); // y değeri offset
         var arrow = Instantiate(projectile, transform.position+new Vector3(0,1,0),Quaternion.LookRotation(direction));

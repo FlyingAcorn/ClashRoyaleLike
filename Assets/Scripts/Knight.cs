@@ -6,18 +6,14 @@ using UnityEngine;
 
 public class Knight : Agent
 {
-    [SerializeField] public MeshCollider hitCollider;
+    [SerializeField] private MeshCollider hitCollider;
     
     protected override IEnumerator Acting()
     {
         myAnimator.SetBool("isAttacking",true);
         hitCollider.enabled = true;
-        AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
-        var firstClipDuration = clipInfos[0].clip.averageDuration;
-        transform.DOLookAt(target.transform.position,firstClipDuration*0.5f,AxisConstraint.Y);
-        yield return new WaitForSeconds(firstClipDuration*0.5f);
-        myAnimator.SetBool("isAttacking",false);
-        hitCollider.enabled = false;
+        transform.DOLookAt(target.transform.position,0.25f,AxisConstraint.Y);
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(entityClassType.attackSpeed);
         if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
         {
@@ -30,9 +26,10 @@ public class Knight : Agent
         yield return null;
     }
 
-    protected override void GotHitSequence() // biri vurulunca vuranın classındaki bu method çalışıyor (bunun yerine iframe verebilirsin)
+    public void hit() // AnimEvent
     {
-        myAnimator.SetBool("isAttacking",false);
         hitCollider.enabled = false;
+        myAnimator.SetBool("isAttacking",false);
     }
+    
 }

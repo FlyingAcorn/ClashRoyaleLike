@@ -52,6 +52,7 @@ public abstract class Agent : Entity
            StopCoroutine(currentCoroutine);
            myAgent.isStopped = true;
            myAnimator.SetTrigger("isDead");
+           collider.enabled = false;
            AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
            var firstClipDuration = clipInfos[0].clip.averageDuration;
            DOVirtual.DelayedCall(firstClipDuration+2, (() => { gameObject.SetActive(false); }));

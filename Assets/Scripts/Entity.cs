@@ -8,15 +8,16 @@ public abstract class Entity : MonoBehaviour
 {
     [SerializeField] public EntityScriptableObj entityClassType;
     [SerializeField] protected Animator myAnimator;
-    [SerializeField] private Collider Collider;
+    [SerializeField] protected Collider collider;
     [SerializeField] protected Entity target;
+    private Entity IFrameAgainst;
     
 
     private bool _isFlying;
     public bool isAlly;
     [SerializeField]private int health;
 
-    private int Health
+    public int Health
     {
         get => health;
         set { health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value; }
@@ -26,22 +27,23 @@ public abstract class Entity : MonoBehaviour
     {
         _isFlying = entityClassType.isFlying;
         Health = entityClassType.maxHealth;
-        Debug.Log(Health);
-
     }
 
     private void OnTriggerEnter(Collider trigger)
     {
-        if (trigger.transform.TryGetComponent(out Weapon weapon) && weapon.owner.isAlly != isAlly)
+        if (trigger.transform.TryGetComponent(out Weapon weapon) && weapon.owner.isAlly != isAlly )
         {
             if (weapon.owner.entityClassType.isRanged)
             {
                 weapon.OnHit();
             }
             //myAnimator.SetTrigger("isHit");
-            Health -= weapon.owner.entityClassType.damage;
-            weapon.owner.GotHitSequence();
-            Debug.Log(weapon.owner.gameObject.name+"  "+gameObject.name);
+            if ( weapon.owner != IFrameAgainst)
+            {
+                Health -= weapon.owner.entityClassType.damage;
+                IFrameAgainst = weapon.owner;
+                DOVirtual.DelayedCall(0.3f, () => { IFrameAgainst = null;});
+            }
             if (Health <= 0)
             {
                 DeathSequence();
@@ -57,7 +59,6 @@ public abstract class Entity : MonoBehaviour
             }
         }
     }
-    
     protected float FindClosestTarget()
     {
         Entity minDistanceEntity = null;
@@ -76,10 +77,8 @@ public abstract class Entity : MonoBehaviour
         return minDistance;
     }
     protected abstract void DeathSequence();
-    protected abstract void GotHitSequence();
-
     public float ColliderOffset()
     {
-        return Collider.bounds.size.x*0.5f;
+        return collider.bounds.size.x*0.5f;
     }
 }

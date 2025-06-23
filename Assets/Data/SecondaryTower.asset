@@ -18,4 +18,4 @@ MonoBehaviour:
   damage: 20
   attackSpeed: 1
   speed: 0
-  rangeRadius: 10
+  rangeRadius: 15

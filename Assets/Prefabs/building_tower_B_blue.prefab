@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityClassType: {fileID: 11400000, guid: fafc57ee95d4da2419144d98aa220b66, type: 2}
   myAnimator: {fileID: 0}
-  Collider: {fileID: 7135848293593504469}
+  collider: {fileID: 7135848293593504469}
   target: {fileID: 0}
   isAlly: 0
   health: 0
