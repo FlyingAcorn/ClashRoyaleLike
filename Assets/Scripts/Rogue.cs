@@ -25,7 +25,7 @@ public class Rogue : Agent
         yield return null;
     }
 
-    public void hit()//AnimEvent
+    public void Hit()//AnimEvent
     {
         foreach (var c in hitColliders) c.enabled = !c.enabled;
         myAnimator.SetBool("isAttacking",false);
