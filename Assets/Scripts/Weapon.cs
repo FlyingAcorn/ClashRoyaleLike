@@ -1,17 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     public Entity owner;
     [SerializeField] private Collider myCollider;
-    
 
-    public void OnHit()
+    private void OnTriggerEnter(Collider other)
     {
-        gameObject.SetActive(false);
+        if (other.TryGetComponent(out Entity target) && owner.isAlly !=target.isAlly)
+        {
+            OnHit(target);
+            //target.myAnimator.SetTrigger("isHit"); animator public olacak
+            target.CheckHealth();
+            
+        }
     }
 
+    protected abstract void OnHit(Entity target);
 }

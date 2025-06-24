@@ -8,11 +8,8 @@ public abstract class Entity : MonoBehaviour
 {
     [SerializeField] public EntityScriptableObj entityClassType;
     [SerializeField] protected Animator myAnimator;
-    [SerializeField] protected Collider collider;
+    [SerializeField] protected new Collider collider;
     [SerializeField] protected Entity target;
-    private Entity IFrameAgainst;
-    
-
     private bool _isFlying;
     public bool isAlly;
     [SerializeField]private int health;
@@ -28,37 +25,21 @@ public abstract class Entity : MonoBehaviour
         _isFlying = entityClassType.isFlying;
         Health = entityClassType.maxHealth;
     }
-
-    private void OnTriggerEnter(Collider trigger)
+    public void CheckHealth()
     {
-        if (trigger.transform.TryGetComponent(out Weapon weapon) && weapon.owner.isAlly != isAlly )
-        {
-            if (weapon.owner.entityClassType.isRanged)
+        if (Health <= 0)
+        { 
+            DeathSequence();
+            if (isAlly)
             {
-                weapon.OnHit();
+                EntityManager.Instance.allies.Remove(this);
             }
-            //myAnimator.SetTrigger("isHit");
-            if ( weapon.owner != IFrameAgainst)
+            else
             {
-                Health -= weapon.owner.entityClassType.damage;
-                IFrameAgainst = weapon.owner;
-                DOVirtual.DelayedCall(0.3f, () => { IFrameAgainst = null;});
-            }
-            if (Health <= 0)
-            {
-                DeathSequence();
-                if (isAlly)
-                {
-                    EntityManager.Instance.allies.Remove(this);
-                }
-                else
-                {
-                    EntityManager.Instance.enemies.Remove(this);
-                }
-                
+                EntityManager.Instance.enemies.Remove(this);
             }
         }
-    }
+    } 
     protected float FindClosestTarget()
     {
         Entity minDistanceEntity = null;

@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 4092954711317312556}
   - component: {fileID: 1123367560674056128}
   - component: {fileID: 7382939630133450124}
-  - component: {fileID: 1433341071506818871}
+  - component: {fileID: 2717909195586018630}
   m_Layer: 0
   m_Name: 2H_Axe
   m_TagString: Untagged
@@ -615,7 +615,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 745233769925281423, guid: 6d7316c5da1c5694e98918ff55afe836, type: 3}
---- !u!114 &1433341071506818871
+--- !u!114 &2717909195586018630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253109266606760705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95d7110f120e0b409ea47cfe131e93d, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2e40060c77d84488829cf565b5e7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 3536514402673644967}

@@ -199,7 +199,7 @@ MonoBehaviour:
   myAgent: {fileID: 5046635409708626496}
   myBody: {fileID: 6564061847100462953}
   currentBehaviour: 0
-  projectile: {fileID: 4470615114170432540, guid: cc7fcd4ceedb39a4a83809c5b3daf2b9, type: 3}
+  projectile: {fileID: 8552730197247964740, guid: cc7fcd4ceedb39a4a83809c5b3daf2b9, type: 3}
 --- !u!95 &6794079774634707569
 Animator:
   serializedVersion: 5

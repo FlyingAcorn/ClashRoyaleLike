@@ -104,7 +104,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isAlly: 0
   health: 0
-  projectile: {fileID: 6341622329534193129, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
+  projectile: {fileID: -5510668088678675363, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
   currentBehaviour: 0
 --- !u!64 &7135848293593504469
 MeshCollider:

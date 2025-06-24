@@ -25,8 +25,8 @@ public class Wizard : Agent
     }
     public void Shoot() // animEvent
     {
-        var direction = target.transform.position - transform.position + new Vector3(0, 10, 0); // y değeri offset
-        var fireball = Instantiate(projectile, transform.position+new Vector3(0,1,0),Quaternion.LookRotation(direction));
+        
+        var fireball = Instantiate(projectile, transform.position+new Vector3(0,1,0),Quaternion.identity);
         fireball.owner = this;
         var time = FindClosestTarget() / 30; // 20 is speedper pixel
         var _targetsPos = target.transform.position;

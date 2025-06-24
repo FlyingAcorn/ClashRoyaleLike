@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 7907071610882673291}
   - component: {fileID: 7527969142164381207}
   - component: {fileID: 8257513105734943274}
-  - component: {fileID: 139420055502187243}
+  - component: {fileID: 6192232975455570357}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -299,7 +299,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4898376589914736847, guid: a70edaf81f5bada4fbb10c39f9af677e, type: 3}
---- !u!114 &139420055502187243
+--- !u!114 &6192232975455570357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1860442655755834918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95d7110f120e0b409ea47cfe131e93d, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2e40060c77d84488829cf565b5e7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 8343347023801242757}
@@ -1654,7 +1654,7 @@ GameObject:
   - component: {fileID: 1929307475320501759}
   - component: {fileID: 4440861174113654768}
   - component: {fileID: 8814357654127382453}
-  - component: {fileID: 2745098373194025561}
+  - component: {fileID: 4298125762760548418}
   m_Layer: 0
   m_Name: Knife_Offhand
   m_TagString: Untagged
@@ -1749,7 +1749,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 418065758732099082, guid: a70edaf81f5bada4fbb10c39f9af677e, type: 3}
---- !u!114 &2745098373194025561
+--- !u!114 &4298125762760548418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6467372052739487637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95d7110f120e0b409ea47cfe131e93d, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2e40060c77d84488829cf565b5e7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 8343347023801242757}

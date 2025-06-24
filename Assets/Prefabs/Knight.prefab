@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 1000655023738588298}
   - component: {fileID: 5526038694931922183}
   - component: {fileID: 3869150696464890537}
-  - component: {fileID: 934594421944439329}
+  - component: {fileID: 8186998204798835123}
   m_Layer: 0
   m_Name: 2H_Sword
   m_TagString: Untagged
@@ -517,7 +517,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6463814238251568398, guid: d4204cd5383f3f04b9b9a750ac7865e0, type: 3}
---- !u!114 &934594421944439329
+--- !u!114 &8186998204798835123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -526,11 +526,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 864021953214046168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95d7110f120e0b409ea47cfe131e93d, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2e40060c77d84488829cf565b5e7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 4623161955593346083}
-  myCollider: {fileID: 0}
+  myCollider: {fileID: 3869150696464890537}
 --- !u!1 &1364162890966509183
 GameObject:
   m_ObjectHideFlags: 0

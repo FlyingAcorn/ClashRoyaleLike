@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 960814905439224412}
   - component: {fileID: 6331501792908646017}
   - component: {fileID: 2082303718663502865}
-  - component: {fileID: 4470615114170432540}
   - component: {fileID: 4461067841461112584}
+  - component: {fileID: 8552730197247964740}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4470615114170432540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3433059509871907477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f95d7110f120e0b409ea47cfe131e93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  myCollider: {fileID: 4461067841461112584}
 --- !u!64 &4461067841461112584
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +107,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8552730197247964740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433059509871907477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bd8e23926afdb4c86920ee476be263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  myCollider: {fileID: 4461067841461112584}
+  fireBallParticle: {fileID: 5709008251246335656, guid: 65e227c5c3b5f1d41af0a8c28e2fcf29, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radius: 6
+  maxDistance: 0
