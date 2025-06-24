@@ -20,7 +20,7 @@ public class FireBall : Weapon
         Instantiate(fireBallParticle, transform.position+new Vector3(0,1,0),Quaternion.identity);
         var size = Physics.OverlapSphereNonAlloc(target.transform.position, radius, _entitiesInRange);
         Debug.Log(size);
-        List<Collider> desiredList = _entitiesInRange.Where(c => c.isTrigger == false && c.TryGetComponent(out Entity _)).ToList();
+        List<Collider> desiredList = _entitiesInRange.Where(c =>c !=null &&c.isTrigger == false && c.TryGetComponent(out Entity _)).ToList(); // bunu findall cevir
         Debug.Log(desiredList.Count);
         for (int i = 0; i < desiredList.Count; i++)
         {
