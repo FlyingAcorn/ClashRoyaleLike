@@ -70,7 +70,7 @@ public class Tower : Entity
         arrow.owner = this;
         var time = FindClosestTarget() / 20; // 20 is speedper pixel
         var _targetsPos = target.transform.position;
-        arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time);
+        arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time).OnComplete(() => DOVirtual.DelayedCall(3,(() => arrow.gameObject.SetActive(false))));;
         yield return new WaitForSeconds(entityClassType.attackSpeed);
         if (FindClosestTarget() - target.ColliderOffset() > entityClassType.rangeRadius)
         {
