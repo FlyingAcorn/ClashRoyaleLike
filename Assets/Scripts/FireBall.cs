@@ -32,8 +32,8 @@ public class FireBall : Weapon
         gameObject.SetActive(false);
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position,radius);
-    }
+    }*/
 }

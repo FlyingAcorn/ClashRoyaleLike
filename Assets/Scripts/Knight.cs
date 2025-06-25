@@ -13,7 +13,7 @@ public class Knight : Agent
         myAnimator.SetBool("isAttacking",true);
         hitCollider.enabled = true;
         transform.DOLookAt(target.transform.position,0.25f,AxisConstraint.Y);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         yield return new WaitForSeconds(entityClassType.attackSpeed);
         if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
         {
