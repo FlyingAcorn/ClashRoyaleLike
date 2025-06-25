@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFlying: 0
   isRanged: 1
-  maxHealth: 40
+  maxHealth: 60
   damage: 50
   attackSpeed: 5
   speed: 1

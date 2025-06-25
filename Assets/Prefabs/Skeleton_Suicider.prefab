@@ -1089,6 +1089,7 @@ MonoBehaviour:
   myBody: {fileID: 8099208214258320629}
   currentBehaviour: 0
   explosionParticle: {fileID: 788140563659194165}
+  explosionRadius: 6
 --- !u!1 &3891945077446622689
 GameObject:
   m_ObjectHideFlags: 0

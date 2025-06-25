@@ -20,14 +20,13 @@ public class FireBall : Weapon
         var spawnedEffect = Instantiate(fireBallParticle); // wizard owner atadığında particle effect child objesi yok oluyor.
         spawnedEffect.Play();
         var size = Physics.OverlapSphereNonAlloc(target.transform.position, radius, _entitiesInRange);
-        Debug.Log(size);
         List<Collider> desiredList = _entitiesInRange.Where(c =>c !=null &&c.isTrigger == false && c.TryGetComponent(out Entity _)).ToList(); // bunu findall cevir
-        Debug.Log(desiredList.Count);
         for (int i = 0; i < desiredList.Count; i++)
         {
             desiredList[i].TryGetComponent(out Entity entity);
             if (entity.isAlly == owner.isAlly) return;
             entity.Health -= owner.entityClassType.damage;
+            entity.CheckHealth();
         }
         gameObject.SetActive(false);
     }
