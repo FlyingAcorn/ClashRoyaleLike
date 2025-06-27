@@ -20,7 +20,7 @@ public class SkeletonSuicider : Agent
     {
         myAnimator.SetBool("isAttacking",true);
         transform.DOLookAt(target.transform.position,0.25f,AxisConstraint.Y);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         Health = 0;
         CheckHealth();
         yield return null;
