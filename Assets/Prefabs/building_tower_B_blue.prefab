@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3260236645229150566}
   - component: {fileID: 6130183795574733488}
   - component: {fileID: 7135848293593504469}
+  - component: {fileID: 4503392317018835815}
   m_Layer: 0
   m_Name: building_tower_B_blue
   m_TagString: Untagged
@@ -128,6 +129,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1867165846391908481, guid: e8c3fc35e8a56c44ba74d6b3739b89ed, type: 3}
+--- !u!208 &4503392317018835815
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318241095045624146}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.46, y: 0.75000006, z: 0.46}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.75000006, z: 0.024}
+  m_TimeToStationary: 0.5
 --- !u!1 &8165301951115988720
 GameObject:
   m_ObjectHideFlags: 0

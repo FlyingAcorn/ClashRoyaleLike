@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5341673425098478899}
   - component: {fileID: 7117049008956586965}
   - component: {fileID: 2367645774988547754}
+  - component: {fileID: 9007537701418116600}
   m_Layer: 0
   m_Name: building_barracks_blue
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7498588317638215473, guid: 0b26bd59d5111184b8f148e38cb8eca3, type: 3}
+--- !u!208 &9007537701418116600
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645439973667515382}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.72, y: 0.82000005, z: 0.78300005}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.82000005, z: 0.063}
+  m_TimeToStationary: 0.5
