@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c16c3b99ca546f0439b5bae20a4d2401, type: 3}
-  m_Name: Rogue
+  m_Name: Archer
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
-  image: {fileID: 0}
-  mana: 0
+  prefab: {fileID: 3016246706931713425, guid: e6b5d626d8d9b5349843f2ecf501d1c6, type: 3}
+  image: {fileID: 21300000, guid: f95da5ac7a3028c43bb243a8b241ca04, type: 3}
+  mana: 2

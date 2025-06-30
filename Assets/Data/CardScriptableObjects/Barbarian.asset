@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c16c3b99ca546f0439b5bae20a4d2401, type: 3}
-  m_Name: SkeletonSuicider
+  m_Name: Barbarian
   m_EditorClassIdentifier: 
-  entities: []
-  image: {fileID: 0}
-  mana: 0
+  prefab: {fileID: 4373219713281144474, guid: 8a0ead2dd06d5c34c97a26e7798c7dba, type: 3}
+  image: {fileID: 21300000, guid: 4c5b0d63b824fe646b1dd52a3b76f9e5, type: 3}
+  mana: 3

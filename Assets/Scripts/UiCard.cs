@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandler
 {
-    [SerializeField] private Entity currentCard;
+    [SerializeField] private Card currentCard;
     [SerializeField] private Canvas myCanvas;
     [SerializeField] private RectTransform myTransform;
     private Vector3 _localPosition;
@@ -51,5 +51,7 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         myTransform.pivot = _pivot;
         myTransform.localScale = _scale;
         myTransform.localRotation = _rotation;
+        // manası yetmezse return
+        //
     }
 }

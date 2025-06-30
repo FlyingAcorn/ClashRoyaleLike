@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardInfo",menuName = "ScriptableObj/CardInfo")]
 public class CardScriptableObject : ScriptableObject
 {
-   public Card Prefab;
+   public Card prefab;
    public Sprite image;
    public int mana;
 }

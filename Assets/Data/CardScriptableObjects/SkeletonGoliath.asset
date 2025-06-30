@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c16c3b99ca546f0439b5bae20a4d2401, type: 3}
-  m_Name: Wizard
+  m_Name: SkeletonGoliath
   m_EditorClassIdentifier: 
-  entities: []
-  image: {fileID: 0}
-  mana: 0
+  prefab: {fileID: 8780101094743394504, guid: 36f6ae3156e28aa49b30397ea1d9ca8c, type: 3}
+  image: {fileID: 21300000, guid: 211d6a597af2f994382bcbdb4a7f296c, type: 3}
+  mana: 5

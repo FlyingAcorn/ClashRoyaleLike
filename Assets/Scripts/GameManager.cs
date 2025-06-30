@@ -5,6 +5,12 @@ using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
+    public float alliedMana;
+    public float enemyMana;
+    public List<Card> alliedDeck;
+    public List<Card> allyPlayedCards;
+    public List<Card> enemyDeck;
+    public List<Card> enemyPlayedCards;
     public static event Action<GameState> OnGameStateChanged;
 
     public enum GameState

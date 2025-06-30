@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c16c3b99ca546f0439b5bae20a4d2401, type: 3}
-  m_Name: Necromancer
+  m_Name: ArcherDuo
   m_EditorClassIdentifier: 
-  entities: []
-  image: {fileID: 0}
-  mana: 0
+  prefab: {fileID: 5327253909478753886, guid: b758af430cad49240aeab1668fddf478, type: 3}
+  image: {fileID: 21300000, guid: 3f7770b332fe41946a9d02b56bb8b40f, type: 3}
+  mana: 3
