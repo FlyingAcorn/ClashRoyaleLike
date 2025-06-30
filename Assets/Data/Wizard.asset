@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd41a29e841fb1b408e6bbd0237bed5f, type: 3}
+  m_Script: {fileID: 11500000, guid: c16c3b99ca546f0439b5bae20a4d2401, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  isFlying: 0
-  isRanged: 1
-  maxHealth: 60
-  damage: 50
-  attackSpeed: 5
-  speed: 1
-  rangeRadius: 8
-  mana: 4
+  entities: []
+  image: {fileID: 0}
+  mana: 0

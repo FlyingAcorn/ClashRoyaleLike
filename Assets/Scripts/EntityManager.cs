@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class EntityManager : Singleton<EntityManager>
 {
    public List<Entity> allies;

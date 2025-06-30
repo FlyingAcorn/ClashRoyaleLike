@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandler
 {
+    [SerializeField] private Entity currentCard;
     [SerializeField] private Canvas myCanvas;
     [SerializeField] private RectTransform myTransform;
     private Vector3 _localPosition;

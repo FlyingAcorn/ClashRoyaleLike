@@ -12,6 +12,5 @@ public class EntityScriptableObj : ScriptableObject
     public float attackSpeed;
     public float speed;
     public float rangeRadius;
-    public int mana;
 }
 
