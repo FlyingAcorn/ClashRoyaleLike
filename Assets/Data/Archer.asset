@@ -19,3 +19,4 @@ MonoBehaviour:
   attackSpeed: 1
   speed: 1
   rangeRadius: 10
+  mana: 2

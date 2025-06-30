@@ -1405,7 +1405,7 @@ GameObject:
   - component: {fileID: 582076505}
   - component: {fileID: 582076504}
   m_Layer: 0
-  m_Name: EntitiyManager
+  m_Name: EntityManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1456,7 @@ Transform:
   - {fileID: 34495878}
   - {fileID: 1312026129}
   - {fileID: 439615063}
-  m_Father: {fileID: 1826781442}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598910857
 GameObject:
@@ -2850,7 +2850,6 @@ Transform:
   - {fileID: 319718700}
   - {fileID: 1797964908}
   - {fileID: 1693257223}
-  - {fileID: 582076505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1869938929 stripped
@@ -4426,6 +4425,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1696214095}
+  - {fileID: 582076505}
   - {fileID: 617866536}
   - {fileID: 890162330}
   - {fileID: 125916009}

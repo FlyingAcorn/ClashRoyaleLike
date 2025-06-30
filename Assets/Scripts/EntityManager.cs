@@ -8,6 +8,11 @@ public class EntityManager : Singleton<EntityManager>
 {
    public List<Entity> allies;
    public List<Entity> enemies;
+   [SerializeField] private float allyMana;
+   [SerializeField] private float enemyMana;
+   public List<Entity> alliedDeck;
+   public List<Entity> enemyDeck;
+   
    
    public void AddEntity(Entity entity)
    {
