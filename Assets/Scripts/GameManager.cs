@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
+    public Camera mainCamera;
     [SerializeField] private bool inAMatch;
     private float _alliedMana;
     public float AlliedMana
@@ -121,7 +122,7 @@ public class GameManager : Singleton<GameManager>
 
     public void AllyReDrawPile()
     {
-        IListExtensions.Shuffle(allyPlayedCards);
+        allyPlayedCards.Shuffle();
         foreach (var t in allyPlayedCards.ToList()) // tolist yaparak foreach dongusundeki listenin çalışırken değişip error vermesini onledik (maymunluk)
         {//                                                 cunku o listenin bir kopyasının içinceki elemanları değiştiriyoruz to list yaparak
             alliedDeck.Add(t);

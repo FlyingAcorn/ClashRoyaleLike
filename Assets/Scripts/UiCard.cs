@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,7 +11,11 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     public Card currentCard;
     [SerializeField] private Canvas myCanvas;
     [SerializeField] private RectTransform myTransform;
-     public Image myImage;
+    [SerializeField] private LayerMask mask;
+    [SerializeField] private TextMeshProUGUI infoText;
+    
+    
+    public Image myImage;
     private Vector3 _localPosition;
     private Vector2 _anchoredPosition;
     private Vector2 _sizeDelta;
@@ -41,6 +46,14 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     public void OnDrag(PointerEventData eventData)
     {
         myTransform.anchoredPosition += eventData.delta/myCanvas.scaleFactor;
+        Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
+        if (Physics.Raycast(ray,out var hit ,100,mask))  
+        {
+            // if ally mana < card mana ise
+            // text referansı enable olacak mesajı gosterecek
+            //ally mana > card mana ise
+            // text gosterecek burayı optimize et
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -53,9 +66,12 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         myTransform.pivot = _pivot;
         myTransform.localScale = _scale;
         myTransform.localRotation = _rotation;
-        // manası yetmezse return
+        // ondragtakı text disable olacak
+        // manası yetmezse return invert yap burayı
         if (currentCard.cardInfo.mana <= GameManager.Instance.AlliedMana)
         {
+            //instantiate edicek objeyi
+            // objeyi ally kısmına atacak
             GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
             GameManager.Instance.alliedDeck.Remove(currentCard);
             GameManager.Instance.allyPlayedCards.Add(currentCard);
