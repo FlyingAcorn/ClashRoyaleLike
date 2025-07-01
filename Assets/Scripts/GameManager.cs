@@ -1,18 +1,49 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
-    public float alliedMana;
-    public float enemyMana;
+    [SerializeField] private bool inAMatch;
+    private float _alliedMana;
+    public float AlliedMana
+    {
+        get => _alliedMana;
+        set {
+            if (value >10)
+            {
+                _alliedMana = 10;
+            }
+            else
+            {
+                _alliedMana = value;
+            }
+        }
+    }
+    private float _enemyMana;
+    public float EnemyMana
+    {
+        get => _enemyMana;
+        set {
+            if (value >10)
+            {
+                _enemyMana = 10;
+            }
+            else
+            {
+                _enemyMana = value;
+            }
+        }
+    }
+    [SerializeField] private float manaRegenRate;
     public List<Card> alliedDeck;
     public List<Card> allyPlayedCards;
     public List<Card> enemyDeck;
     public List<Card> enemyPlayedCards;
     public static event Action<GameState> OnGameStateChanged;
-
     public enum GameState
     {
         MainMenu,
@@ -45,7 +76,19 @@ public class GameManager : Singleton<GameManager>
 
         if (newState == GameState.Play)
         {
-            //EntityManager.Instance.InitialSort();
+            if (inAMatch == false)
+            {
+                //reset values shuffle deck
+                AlliedMana = 0;
+                EnemyMana = 0;
+                IListExtensions.Shuffle(alliedDeck);
+                UIManager.Instance.choosePanel.UpdateCards
+                    (alliedDeck[0],alliedDeck[1],alliedDeck[2],alliedDeck[3],alliedDeck[4]);
+                inAMatch = true;
+            }
+            StartCoroutine(StartMana());
+            //start mana
+            // start initial cards
         }
 
         if (newState == GameState.Settings)
@@ -54,12 +97,50 @@ public class GameManager : Singleton<GameManager>
 
         if (newState == GameState.Victory)
         {
-            
+            inAMatch = false;
         }
         if (newState == GameState.Defeat)
         {
-            
+            inAMatch = false;
         }
         OnGameStateChanged?.Invoke(newState);
+    }
+
+    private IEnumerator StartMana()
+    {
+        while (state == GameState.Play)
+        {
+            AlliedMana += manaRegenRate * Time.deltaTime;
+            EnemyMana += manaRegenRate * Time.deltaTime;
+            UIManager.Instance.choosePanel.manaSlider.value = _alliedMana;
+            var mana = (int)_alliedMana; // verimsiz olabilir
+            UIManager.Instance.choosePanel.currentManaText.text = mana.ToString();
+            yield return null;
+        }
+    }
+
+    public void AllyReDrawPile()
+    {
+        IListExtensions.Shuffle(allyPlayedCards);
+        foreach (var t in allyPlayedCards.ToList()) // tolist yaparak foreach dongusundeki listenin çalışırken değişip error vermesini onledik (maymunluk)
+        {//                                                 cunku o listenin bir kopyasının içinceki elemanları değiştiriyoruz to list yaparak
+            alliedDeck.Add(t);
+            allyPlayedCards.Remove(t);
+        }
+    }
+}
+public static class IListExtensions {
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts) {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i) {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
     }
 }

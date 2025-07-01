@@ -17,7 +17,7 @@ public abstract class Entity : MonoBehaviour
     public int Health
     {
         get => health;
-        set { health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value; }
+        set => health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
     }
 
     protected virtual void Awake()

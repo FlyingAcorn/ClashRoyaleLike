@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandler
 {
-    [SerializeField] private Card currentCard;
+    public Card currentCard;
     [SerializeField] private Canvas myCanvas;
     [SerializeField] private RectTransform myTransform;
+     public Image myImage;
     private Vector3 _localPosition;
     private Vector2 _anchoredPosition;
     private Vector2 _sizeDelta;
@@ -52,6 +54,13 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         myTransform.localScale = _scale;
         myTransform.localRotation = _rotation;
         // manası yetmezse return
-        //
+        if (currentCard.cardInfo.mana <= GameManager.Instance.AlliedMana)
+        {
+            GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
+            GameManager.Instance.alliedDeck.Remove(currentCard);
+            GameManager.Instance.allyPlayedCards.Add(currentCard);
+            var allydeck = GameManager.Instance.alliedDeck;
+            UIManager.Instance.choosePanel.UpdateCards(allydeck[0],allydeck[1],allydeck[2],allydeck[3],allydeck[4]);
+        }
     }
 }

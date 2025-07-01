@@ -8,13 +8,28 @@ using Slider = UnityEngine.UI.Slider;
 
 public class ChoosePanelElements : MonoBehaviour
 {
-    [SerializeField] private Slider manaSlider;
-    [SerializeField] private List<UiCard> uiCards;
-    [SerializeField] private Image nextCardImage;
-    [SerializeField] private TextMeshProUGUI currentManaText;
-    [SerializeField] private TextMeshProUGUI timerText;
+    public Slider manaSlider;
+    public List<UiCard> uiCards;
+    public Image nextCardImage;
+    public TextMeshProUGUI currentManaText;
+    public TextMeshProUGUI timerText;
     // Game managerden aldığı verilere gore bu paneldeki şeylerin değerlerini değiştirecek
     //ui cards classı kendi en end vs durumlarında mana ve liste değerlerini değiştirecek
     // deck eleman sayısı 5 ise played cards shuffle at ve geri ekle yapacak
-   
+    public void UpdateCards(Card leftMost, Card leftMiddle, Card middleRight,Card rightMost,Card nextCard)
+    {
+        uiCards[0].currentCard = leftMost;
+        uiCards[1].currentCard = leftMiddle;
+        uiCards[2].currentCard = middleRight;
+        uiCards[3].currentCard = rightMost;
+        nextCardImage.sprite = nextCard.cardInfo.image;
+        foreach (var t in uiCards)
+        { 
+            t.myImage.sprite = t.currentCard.cardInfo.image;
+        }
+        if (GameManager.Instance.alliedDeck.Count ==5)
+        {
+            GameManager.Instance.AllyReDrawPile();
+        }
+    }
 }
