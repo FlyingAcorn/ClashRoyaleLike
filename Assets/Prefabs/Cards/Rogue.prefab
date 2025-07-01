@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4330411013214123785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.58184, y: 3.1953928, z: -14.988568}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardInfo: {fileID: 11400000, guid: 0bfee93bad398ea49826adb24a749081, type: 2}
+  entities:
+  - {fileID: 5995502119703168830}
 --- !u!1001 &2377276631619081147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,3 +110,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2431225526546138300, guid: 65e26d7208427584383e99466dbb23ea, type: 3}
   m_PrefabInstance: {fileID: 2377276631619081147}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5995502119703168830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8343347023801242757, guid: 65e26d7208427584383e99466dbb23ea, type: 3}
+  m_PrefabInstance: {fileID: 2377276631619081147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc0afb54b833a7428f41ccdaf55b860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

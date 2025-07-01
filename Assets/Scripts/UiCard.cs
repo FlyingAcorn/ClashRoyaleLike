@@ -13,6 +13,8 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     [SerializeField] private RectTransform myTransform;
     [SerializeField] private LayerMask mask;
     [SerializeField] private TextMeshProUGUI infoText;
+    private bool _canSummon;
+    private Vector3 _pointOfSummon;
     
     
     public Image myImage;
@@ -45,15 +47,25 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     }
     public void OnDrag(PointerEventData eventData)
     {
+        _canSummon = false;
         myTransform.anchoredPosition += eventData.delta/myCanvas.scaleFactor;
         Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
-        if (Physics.Raycast(ray,out var hit ,100,mask))  
+        if (!Physics.Raycast(ray,out var hit ,100,mask)) return;
+        Debug.Log(hit.point);
+        if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone) return;
+        infoText.gameObject.SetActive(true);
+        if (GameManager.Instance.AlliedMana < currentCard.cardInfo.mana)
         {
-            // if ally mana < card mana ise
-            // text referansı enable olacak mesajı gosterecek
-            //ally mana > card mana ise
-            // text gosterecek burayı optimize et
+            infoText.text = "You need" + " " + (int)GameManager.Instance.AlliedMana + "/" + currentCard.cardInfo.mana +
+                            " to summon this.";
         }
+        else
+        {
+            _pointOfSummon = hit.point;
+            _canSummon = true;
+            infoText.text = "You can summon.";
+        }
+        // son olarak yanlış zoneda olduğunda text ile onu belirtsin.
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -66,17 +78,20 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         myTransform.pivot = _pivot;
         myTransform.localScale = _scale;
         myTransform.localRotation = _rotation;
-        // ondragtakı text disable olacak
-        // manası yetmezse return invert yap burayı
-        if (currentCard.cardInfo.mana <= GameManager.Instance.AlliedMana)
+        infoText.gameObject.SetActive(false);
+        if (!_canSummon) return;
+        if (!(currentCard.cardInfo.mana <= GameManager.Instance.AlliedMana)) return;
+        foreach (var t in currentCard.entities)
         {
-            //instantiate edicek objeyi
-            // objeyi ally kısmına atacak
-            GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
-            GameManager.Instance.alliedDeck.Remove(currentCard);
-            GameManager.Instance.allyPlayedCards.Add(currentCard);
-            var allydeck = GameManager.Instance.alliedDeck;
-            UIManager.Instance.choosePanel.UpdateCards(allydeck[0],allydeck[1],allydeck[2],allydeck[3],allydeck[4]);
+            t.isAlly = true;
         }
+        Instantiate(currentCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
+        //instantiate edicek objeyi
+        // objeyi ally kısmına atacak
+        GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
+        GameManager.Instance.alliedDeck.Remove(currentCard);
+        GameManager.Instance.allyPlayedCards.Add(currentCard);
+        var allydeck = GameManager.Instance.alliedDeck;
+        UIManager.Instance.choosePanel.UpdateCards(allydeck[0],allydeck[1],allydeck[2],allydeck[3],allydeck[4]);
     }
 }

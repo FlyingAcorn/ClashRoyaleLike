@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7298111400506335974, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -778,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b27cf3531e19b841bbab15017e9851e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAllyZone: 1
+  isAllyZone: 0
 --- !u!1 &354240366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 6193356214698114120, guid: f3bd11c7fc7b8d6448726cf99614be36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2016,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnightRed (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3892915233522124491, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.8
@@ -2072,6 +2084,10 @@ PrefabInstance:
     - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_Name
       value: KnightRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3892915233522124491, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2357,7 +2373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b27cf3531e19b841bbab15017e9851e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAllyZone: 0
+  isAllyZone: 1
 --- !u!64 &1114674814
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2481,6 +2497,10 @@ PrefabInstance:
     - target: {fileID: 3734165628333836999, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6130183795574733488, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
+      propertyPath: isAlly
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2632,6 +2652,10 @@ PrefabInstance:
     - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_Name
       value: KnightRed (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3892915233522124491, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3873,6 +3897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 245959487346147507, guid: d0c012fcf72233f4eb593be81719e9e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5282237399009309838, guid: d0c012fcf72233f4eb593be81719e9e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.34
@@ -3970,6 +3998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rogue
       objectReference: {fileID: 0}
+    - target: {fileID: 3812477405379281701, guid: 65e26d7208427584383e99466dbb23ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3991,6 +4023,10 @@ PrefabInstance:
     - target: {fileID: 830014728427180747, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 830014728427180747, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494487275170544849, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4089,6 +4125,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6130183795574733488, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
+      propertyPath: isAlly
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4146,6 +4186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: building_barracks_red
       objectReference: {fileID: 0}
+    - target: {fileID: 8323257568976959951, guid: 9540e1e53e199b84e88dbebb90f88fa0, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4202,6 +4246,10 @@ PrefabInstance:
     - target: {fileID: 8100602211826026908, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100602211826026908, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4317,6 +4365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barbarian
       objectReference: {fileID: 0}
+    - target: {fileID: 4727891035383316882, guid: 967d2d3cba3f50944aaabde0aecc0283, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4378,6 +4430,10 @@ PrefabInstance:
     - target: {fileID: 4869290115962345669, guid: e9dc8f30f2eb3b84cbe7b4fcc6166dd6, type: 3}
       propertyPath: m_Name
       value: Skeleton_Necromancer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869290115962345669, guid: e9dc8f30f2eb3b84cbe7b4fcc6166dd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4441,6 +4497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7298111400506335974, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4457,6 +4517,10 @@ PrefabInstance:
     - target: {fileID: 3882043633815600836, guid: f37a88cc84334414ba97759ad17715c7, type: 3}
       propertyPath: m_Name
       value: Skeleton_Suicider
+      objectReference: {fileID: 0}
+    - target: {fileID: 3882043633815600836, guid: f37a88cc84334414ba97759ad17715c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7234227143742106769, guid: f37a88cc84334414ba97759ad17715c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4565,6 +4629,10 @@ PrefabInstance:
     - target: {fileID: 1078660870585215536, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117049008956586965, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
+      propertyPath: isAlly
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8645439973667515382, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
       propertyPath: m_Name
@@ -4864,6 +4932,10 @@ PrefabInstance:
     - target: {fileID: 3387439708201894920, guid: abdea9033f5ab7c4f83fe484546fc1f4, type: 3}
       propertyPath: m_Name
       value: Skeleton_Warrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 3387439708201894920, guid: abdea9033f5ab7c4f83fe484546fc1f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3466988631415123213, guid: abdea9033f5ab7c4f83fe484546fc1f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

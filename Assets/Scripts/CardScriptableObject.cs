@@ -8,4 +8,5 @@ public class CardScriptableObject : ScriptableObject
    public Card prefab;
    public Sprite image;
    public int mana;
+   public bool canInvade;
 }

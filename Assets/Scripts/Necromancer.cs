@@ -38,7 +38,6 @@ public class Necromancer : Agent
             EntityManager.Instance.AddEntity(summoned);
         }
         myAnimator.SetBool("isAttacking",false);
-        
     }
 
     private Vector3 CheckEmptySpace()
