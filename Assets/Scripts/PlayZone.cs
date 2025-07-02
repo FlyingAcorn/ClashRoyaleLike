@@ -6,4 +6,5 @@ using UnityEngine;
 public class PlayZone : MonoBehaviour
 { 
     public bool isAllyZone;
+    public List<Transform> nodes;
 }

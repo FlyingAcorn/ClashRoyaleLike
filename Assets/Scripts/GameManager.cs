@@ -123,10 +123,19 @@ public class GameManager : Singleton<GameManager>
     public void AllyReDrawPile()
     {
         allyPlayedCards.Shuffle();
-        foreach (var t in allyPlayedCards.ToList()) // tolist yaparak foreach dongusundeki listenin çalışırken değişip error vermesini onledik (maymunluk)
-        {//                                                 cunku o listenin bir kopyasının içinceki elemanları değiştiriyoruz to list yaparak
+        foreach (var t in allyPlayedCards.ToList())
+        {
             alliedDeck.Add(t);
             allyPlayedCards.Remove(t);
+        }
+    }
+    public void EnemyReDrawPile()
+    {
+        enemyPlayedCards.Shuffle();
+        foreach (var t in enemyPlayedCards.ToList())
+        {
+            enemyDeck.Add(t);
+            enemyPlayedCards.Remove(t);
         }
     }
 }
