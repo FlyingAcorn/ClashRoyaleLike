@@ -37,23 +37,28 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         _pivot = myTransform.pivot;
         _scale = myTransform.localScale;
         _rotation = myTransform.localRotation;
-
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
-
+        infoText.gameObject.SetActive(true);
     }
     public void OnDrag(PointerEventData eventData)
     {
         _canSummon = false;
         myTransform.anchoredPosition += eventData.delta/myCanvas.scaleFactor;
         Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
-        if (!Physics.Raycast(ray,out var hit ,100,mask)) return;
+        if (!Physics.Raycast(ray, out var hit, 100, mask))
+        {
+            infoText.text = "";
+            return;
+        }
         Debug.Log(hit.point);
-        if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone) return;
-        infoText.gameObject.SetActive(true);
+        if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone)
+        {
+            infoText.text = "You cannot summon.";
+            return;
+        }
         if (GameManager.Instance.AlliedMana < currentCard.cardInfo.mana)
         {
             infoText.text = "You need" + " " + (int)GameManager.Instance.AlliedMana + "/" + currentCard.cardInfo.mana +
@@ -65,7 +70,6 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
             _canSummon = true;
             infoText.text = "You can summon.";
         }
-        // son olarak yanlış zoneda olduğunda text ile onu belirtsin.
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -78,16 +82,15 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         myTransform.pivot = _pivot;
         myTransform.localScale = _scale;
         myTransform.localRotation = _rotation;
+        infoText.text = "";
         infoText.gameObject.SetActive(false);
         if (!_canSummon) return;
         if (!(currentCard.cardInfo.mana <= GameManager.Instance.AlliedMana)) return;
-        foreach (var t in currentCard.entities)
+        foreach (var t in currentCard.entities) // objeyi ally yapıyor
         {
             t.isAlly = true;
         }
         Instantiate(currentCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
-        //instantiate edicek objeyi
-        // objeyi ally kısmına atacak
         GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
         GameManager.Instance.alliedDeck.Remove(currentCard);
         GameManager.Instance.allyPlayedCards.Add(currentCard);
