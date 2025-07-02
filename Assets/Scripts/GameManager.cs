@@ -82,14 +82,14 @@ public class GameManager : Singleton<GameManager>
                 //reset values shuffle deck
                 AlliedMana = 0;
                 EnemyMana = 0;
-                IListExtensions.Shuffle(alliedDeck);
+                alliedDeck.Shuffle();
+                enemyDeck.Shuffle();
                 UIManager.Instance.choosePanel.UpdateCards
                     (alliedDeck[0],alliedDeck[1],alliedDeck[2],alliedDeck[3],alliedDeck[4]);
                 inAMatch = true;
             }
             StartCoroutine(StartMana());
-            //start mana
-            // start initial cards
+            EnemyAiManager.Instance.UpdateAiState(EnemyAiManager.AiState.Wait);
         }
 
         if (newState == GameState.Settings)

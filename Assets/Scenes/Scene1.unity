@@ -336,17 +336,17 @@ MonoBehaviour:
   - {fileID: 3016246706931713425, guid: e6b5d626d8d9b5349843f2ecf501d1c6, type: 3}
   allyPlayedCards: []
   enemyDeck:
-  - {fileID: 3851963638099116848, guid: 283ca52821769554c8c47b2321609b4a, type: 3}
-  - {fileID: 6172435165112780072, guid: 2773cf0070eb08f41af18bfce1c3cebc, type: 3}
-  - {fileID: 1308858378587649953, guid: e42e0d004b7e7354091d10291fcdc302, type: 3}
+  - {fileID: 3016246706931713425, guid: e6b5d626d8d9b5349843f2ecf501d1c6, type: 3}
+  - {fileID: 5327253909478753886, guid: b758af430cad49240aeab1668fddf478, type: 3}
+  - {fileID: 4373219713281144474, guid: 8a0ead2dd06d5c34c97a26e7798c7dba, type: 3}
+  - {fileID: 8780101094743394504, guid: 36f6ae3156e28aa49b30397ea1d9ca8c, type: 3}
+  - {fileID: 6518843499909350679, guid: 1e625bbfda3f9f54bb6eaf6c9e3c49b9, type: 3}
+  - {fileID: 6602423572021927580, guid: b3ea4eb94430ebe488b693e404511d0a, type: 3}
   - {fileID: 2674053301988051062, guid: b2c3b0bb68e8f2541ac29cf25487a7fc, type: 3}
   - {fileID: 8983411660177126572, guid: 29f7d5464277ecb4e963eeb6c741aa9c, type: 3}
-  - {fileID: 6602423572021927580, guid: b3ea4eb94430ebe488b693e404511d0a, type: 3}
-  - {fileID: 6518843499909350679, guid: 1e625bbfda3f9f54bb6eaf6c9e3c49b9, type: 3}
-  - {fileID: 8780101094743394504, guid: 36f6ae3156e28aa49b30397ea1d9ca8c, type: 3}
-  - {fileID: 4373219713281144474, guid: 8a0ead2dd06d5c34c97a26e7798c7dba, type: 3}
-  - {fileID: 5327253909478753886, guid: b758af430cad49240aeab1668fddf478, type: 3}
-  - {fileID: 3016246706931713425, guid: e6b5d626d8d9b5349843f2ecf501d1c6, type: 3}
+  - {fileID: 1308858378587649953, guid: e42e0d004b7e7354091d10291fcdc302, type: 3}
+  - {fileID: 6172435165112780072, guid: 2773cf0070eb08f41af18bfce1c3cebc, type: 3}
+  - {fileID: 3851963638099116848, guid: 283ca52821769554c8c47b2321609b4a, type: 3}
   enemyPlayedCards: []
   state: 0
 --- !u!4 &125916009
@@ -3684,6 +3684,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allyZone: {fileID: 319718701}
   enemyZone: {fileID: 1114674813}
+  currentHand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chosenCard: {fileID: 0}
   state: 0
 --- !u!4 &1820601043
 Transform:
