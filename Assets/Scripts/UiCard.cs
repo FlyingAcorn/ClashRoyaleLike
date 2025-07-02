@@ -53,7 +53,7 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
             infoText.text = "";
             return;
         }
-        Debug.Log(hit.point);
+        //Debug.Log(hit.point);
         if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone)
         {
             infoText.text = "You cannot summon.";

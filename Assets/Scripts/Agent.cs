@@ -55,7 +55,7 @@ public abstract class Agent : Entity
            collider.enabled = false;
            AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
            var firstClipDuration = clipInfos[0].clip.averageDuration;
-           DOVirtual.DelayedCall(firstClipDuration+2, (() => { gameObject.SetActive(false); }));
+           DOVirtual.DelayedCall(firstClipDuration+2, (() => { Destroy(gameObject); }));
        }
        OnAgentStateChanged?.Invoke(newState);
    }

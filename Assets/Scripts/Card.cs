@@ -12,7 +12,6 @@ public class Card : MonoBehaviour
         foreach (var t in entities)
         {
             EntityManager.Instance.AddEntity(t);
-        }   
-        Destroy(this);
+        } 
     }
 }

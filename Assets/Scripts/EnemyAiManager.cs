@@ -11,6 +11,7 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
     [SerializeField] private PlayZone enemyZone;
     [SerializeField] private List<Card> currentHand;
     [SerializeField] private Card chosenCard;
+    private Vector3 _pointOfSummon;
     
     public static event Action<AiState> OnAiStateChanged;
     public enum AiState
@@ -41,11 +42,22 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
         }
         if (newState == AiState.Decide)
         {
+            //ışınlanacağı pozizyonu seçecek seçtiği pozizyonun etrafına randomrange ile hafif offset verecek
+            //:TODO ya detaylı her kartın kendi spawn behaviorunu oluştur yada daha basit sistem yaz
+            //basit sistem benim zoneda düşman varmı(canı azmı),invade edebiliyormuyum,menzillimiyim
+            //gibi sorularla konumu ayarlayacak (düşman üstüne düşman kuleye yada node cevresine gibi)
             Debug.Log(chosenCard.name);
         }
         if (newState == AiState.Play)
         {
-            
+            foreach (var t in chosenCard.entities)
+            {
+                t.isAlly = false;
+            }
+            Instantiate(chosenCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
+            GameManager.Instance.EnemyMana -= chosenCard.cardInfo.mana;
+            GameManager.Instance.enemyDeck.Remove(chosenCard);
+            GameManager.Instance.enemyPlayedCards.Add(chosenCard);
         }
         OnAiStateChanged?.Invoke(newState);
     }

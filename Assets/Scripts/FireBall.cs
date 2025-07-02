@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class FireBall : Weapon
@@ -9,6 +10,7 @@ public class FireBall : Weapon
     [SerializeField] private ParticleSystem fireBallParticle;
     [SerializeField] private float radius;
     private Collider[] _entitiesInRange;
+    public Tween CurrentTween;
 
     private void Awake()
     {
@@ -28,7 +30,8 @@ public class FireBall : Weapon
             entity.Health -= owner.entityClassType.damage;
             entity.CheckHealth();
         }
-        gameObject.SetActive(false);
+        CurrentTween.Kill();
+        Destroy(this);
     }
 
     /*private void OnDrawGizmos()
