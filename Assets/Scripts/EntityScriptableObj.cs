@@ -6,7 +6,6 @@ using UnityEngine;
 public class EntityScriptableObj : ScriptableObject
 {
     public bool isFlying;
-    public bool isRanged;
     public int maxHealth;
     public int damage;
     public float attackSpeed;

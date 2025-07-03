@@ -2152,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3892915233522124491, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2217,7 +2217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3892915233522124491, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2825,7 +2825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 582361679757882330, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3892915233522124491, guid: 039b09cfa567c4441aae7642b16e6e8d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3822,14 +3822,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8aa616527a64494b8b8012b53361118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allyZone: {fileID: 319718701}
-  enemyZone: {fileID: 1114674813}
+  allyZone: {fileID: 1114674813}
+  enemyZone: {fileID: 319718701}
   currentHand:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chosenCard: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   state: 0
 --- !u!4 &1820601043
 Transform:

@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: Barbarian
   m_EditorClassIdentifier: 
   isFlying: 0
-  isRanged: 0
   maxHealth: 150
   damage: 30
   attackSpeed: 4
   speed: 1
   rangeRadius: 2.2
-  mana: 3
-  sprite: {fileID: 21300000, guid: 4c5b0d63b824fe646b1dd52a3b76f9e5, type: 3}

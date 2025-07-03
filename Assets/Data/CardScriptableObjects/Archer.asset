@@ -15,3 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 3016246706931713425, guid: e6b5d626d8d9b5349843f2ecf501d1c6, type: 3}
   image: {fileID: 21300000, guid: f95da5ac7a3028c43bb243a8b241ca04, type: 3}
   mana: 2
+  canInvade: 0
+  hasRanged: 1

@@ -9,4 +9,5 @@ public class CardScriptableObject : ScriptableObject
    public Sprite image;
    public int mana;
    public bool canInvade;
+   public bool hasRanged;
 }

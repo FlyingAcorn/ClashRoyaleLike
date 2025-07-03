@@ -25,7 +25,7 @@ public class PlayZone : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.name);
+        //Debug.Log(collision.transform.name);
         if (collision.transform.TryGetComponent(out Entity entity) && entity.isAlly != isAllyZone)
         {
             Trespassers.Add(entity);
