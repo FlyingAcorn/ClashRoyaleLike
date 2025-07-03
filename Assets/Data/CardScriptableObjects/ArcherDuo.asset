@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5327253909478753886, guid: b758af430cad49240aeab1668fddf478, type: 3}
   image: {fileID: 21300000, guid: 3f7770b332fe41946a9d02b56bb8b40f, type: 3}
-  mana: 3
+  previewModel: {fileID: 3281440722344283640, guid: 81cc4d9b598940343bf7a0cf1dd07aff, type: 3}
+  mana: 4
   canInvade: 0
   hasRanged: 1

@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: SkeletonWarrior
   m_EditorClassIdentifier: 
   isFlying: 0
-  isRanged: 0
-  maxHealth: 2000
+  maxHealth: 300
   damage: 60
   attackSpeed: 4
   speed: 1
   rangeRadius: 2.2
-  mana: 7
-  sprite: {fileID: 0}

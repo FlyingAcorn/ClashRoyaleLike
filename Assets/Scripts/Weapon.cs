@@ -11,6 +11,7 @@ public abstract class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (owner.entityClassType.isRanged )return;
         if (other.TryGetComponent(out Entity target) && owner.isAlly !=target.isAlly)
         {
             OnHit(target);
@@ -20,5 +21,5 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    protected abstract void OnHit(Entity target);
+    public abstract void OnHit(Entity target);
 }

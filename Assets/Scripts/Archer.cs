@@ -30,9 +30,8 @@ public class Archer : Agent
         arrow.owner = this;
         var time = FindClosestTarget() / 30; // 20 is speedper pixel
         var _targetsPos = target.transform.position;
-        var tween = arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time)
-            .OnComplete(() => DOVirtual.DelayedCall(3,(() => Destroy(arrow))));
-        arrow.GetComponent<Arrow>().CurrentTween = tween;
+        arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time)
+            .OnComplete(() =>arrow.OnHit(target));
         myAnimator.SetBool("isAttacking",false);
     }
 

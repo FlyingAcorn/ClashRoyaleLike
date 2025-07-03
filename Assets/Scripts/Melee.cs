@@ -7,7 +7,7 @@ public class Melee : Weapon
 {
     private Entity _frameAgainst;
 
-    protected override void OnHit(Entity target)
+    public override void OnHit(Entity target)
     {
         if ( owner != _frameAgainst)
         {

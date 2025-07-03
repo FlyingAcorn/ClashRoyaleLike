@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: MainTower
   m_EditorClassIdentifier: 
   isFlying: 0
-  isRanged: 1
   maxHealth: 2000
-  damage: 30
-  attackSpeed: 1
+  damage: 20
+  attackSpeed: 1.5
   speed: 0
-  rangeRadius: 15
+  rangeRadius: 8

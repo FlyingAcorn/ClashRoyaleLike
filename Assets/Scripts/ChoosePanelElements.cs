@@ -24,7 +24,8 @@ public class ChoosePanelElements : MonoBehaviour
         uiCards[3].currentCard = rightMost;
         nextCardImage.sprite = nextCard.cardInfo.image;
         foreach (var t in uiCards)
-        { 
+        {
+            t.myManaText.text = t.currentCard.cardInfo.mana.ToString();
             t.myImage.sprite = t.currentCard.cardInfo.image;
         }
         if (GameManager.Instance.alliedDeck.Count ==5)

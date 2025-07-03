@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Barbarian
   m_EditorClassIdentifier: 
   isFlying: 0
-  maxHealth: 150
+  maxHealth: 200
   damage: 30
   attackSpeed: 4
   speed: 1

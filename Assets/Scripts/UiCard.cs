@@ -15,9 +15,11 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     [SerializeField] private TextMeshProUGUI infoText;
     private bool _canSummon;
     private Vector3 _pointOfSummon;
+    private PreviewModel _previewModel;
     
     
     public Image myImage;
+    public TextMeshProUGUI myManaText;
     private Vector3 _localPosition;
     private Vector2 _anchoredPosition;
     private Vector2 _sizeDelta;
@@ -41,31 +43,48 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        myManaText.enabled = false;
+        _previewModel = Instantiate(currentCard.cardInfo.previewModel);
+        _previewModel.gameObject.SetActive(false);
         infoText.gameObject.SetActive(true);
     }
     public void OnDrag(PointerEventData eventData)
     {
         _canSummon = false;
         myTransform.anchoredPosition += eventData.delta/myCanvas.scaleFactor;
+        infoText.gameObject.transform.position = eventData.position+ new Vector2(0,125);
         Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
         if (!Physics.Raycast(ray, out var hit, 100, mask))
         {
+            _previewModel.gameObject.SetActive(false);
             infoText.text = "";
             return;
         }
         //Debug.Log(hit.point);
         if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone)
         {
+            _previewModel.gameObject.transform.position = hit.point;
+            myImage.enabled = false;
+            _previewModel.gameObject.SetActive(true);
+            _previewModel.material.color = _previewModel.toRed;
             infoText.text = "You cannot summon.";
             return;
         }
         if (GameManager.Instance.AlliedMana < currentCard.cardInfo.mana)
         {
+            _previewModel.gameObject.transform.position = hit.point;
+            myImage.enabled = false;
+            _previewModel.gameObject.SetActive(true);
+            _previewModel.material.color = _previewModel.toRed;
             infoText.text = "You need" + " " + (int)GameManager.Instance.AlliedMana + "/" + currentCard.cardInfo.mana +
                             " to summon this.";
         }
         else
         {
+            _previewModel.gameObject.transform.position = hit.point;
+            myImage.enabled = false;
+            _previewModel.gameObject.SetActive(true);
+            _previewModel.material.color = _previewModel.toGreen;
             _pointOfSummon = hit.point;
             _canSummon = true;
             infoText.text = "You can summon.";
@@ -74,6 +93,7 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        myManaText.enabled = true;
         myTransform.localPosition =_localPosition;
         myTransform.anchorMin =_anchorMin;
         myTransform.anchorMax = _anchorMax;
@@ -84,6 +104,10 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         myTransform.localRotation = _rotation;
         infoText.text = "";
         infoText.gameObject.SetActive(false);
+        myImage.enabled = true;
+        _previewModel.gameObject.SetActive(false);
+        Destroy(_previewModel);
+        _previewModel = null;
         if (!_canSummon) return;
         if (!(currentCard.cardInfo.mana <= GameManager.Instance.AlliedMana)) return;
         foreach (var t in currentCard.entities) // objeyi ally yapıyor

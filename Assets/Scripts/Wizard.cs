@@ -29,8 +29,7 @@ public class Wizard : Agent
         fireball.owner=this;
         var time = FindClosestTarget() / 30; // 20 is speedper pixel
         var _targetsPos = target.transform.position;
-        var tween =fireball.transform.DOMove(_targetsPos+new Vector3(0, 1, 0),time).OnComplete(() => DOVirtual.DelayedCall(0.1f,(() => Destroy(fireball))));;
-        fireball.GetComponent<FireBall>().CurrentTween = tween;
+        fireball.transform.DOMove(_targetsPos+new Vector3(0, 1, 0),time).OnComplete(() => fireball.OnHit(target));;
         myAnimator.SetBool("isAttacking",false);
     }
 }
