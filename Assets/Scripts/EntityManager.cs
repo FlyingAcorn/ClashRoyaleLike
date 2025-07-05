@@ -10,6 +10,9 @@ public class EntityManager : Singleton<EntityManager>
     public List<Entity> allies;
     public List<Entity> enemies;
     public GameObject entitiesOnMap; // şimdilik çözüm
+    public Tower allyMainTower;
+    public Tower enemyMainTower;
+    
     
 
     public void AddEntity(Entity entity)

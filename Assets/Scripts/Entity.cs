@@ -16,18 +16,18 @@ public abstract class Entity : MonoBehaviour
 
     private bool _isFlying;
     public bool isAlly;
-    [SerializeField] private float health;
-    private Tweener _healthTween;
+    [SerializeField] protected float health;
+    protected Tweener HealthTween;
     protected Vector3 CameraPos;
 
-    public float Health
+    public virtual float Health
     {
         get => health;
         set
         {
-            _healthTween.Kill();
+            HealthTween.Kill();
             healthBarCanvas.healthBarSlider.gameObject.SetActive(true);
-            _healthTween = healthBarCanvas.healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
+            HealthTween = healthBarCanvas.healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
             health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
         }
     }
@@ -37,6 +37,7 @@ public abstract class Entity : MonoBehaviour
         CameraPos = Camera.main.transform.position;
         _isFlying = entityClassType.isFlying;
         health = entityClassType.maxHealth;
+        healthBarCanvas.healthBarSlider.direction = Slider.Direction.RightToLeft;
         if (isAlly) return;
         healthBarCanvas.healthBarColour.color = Color.red;
         healthBarCanvas.healthBarSlider.transform.rotation = new Quaternion(0, 180, 0, 0);

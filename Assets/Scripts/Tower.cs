@@ -9,7 +9,23 @@ public class Tower : Entity
     [SerializeField] private Weapon projectile;
     private Coroutine _currentCoroutine;
     [SerializeField] private bool isMainTower;
-    public bool isATowerDestroyed;
+
+
+    public override float Health
+    {
+        get => health;
+        set
+        {
+            HealthTween.Kill();
+            healthBarCanvas.healthBarSlider.gameObject.SetActive(true);
+            HealthTween = healthBarCanvas.healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
+            health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
+            if (health < entityClassType.maxHealth && currentBehaviour == TowerBehaviour.Idle)
+            {
+                UpdateTowerState(TowerBehaviour.FindingClosestTarget);
+            }
+        }
+    }
 
     public enum TowerBehaviour
     {
@@ -24,13 +40,13 @@ public class Tower : Entity
 
     private void Start()
     {
-        UpdateTowerState(TowerBehaviour.FindingClosestTarget);
-        healthBarCanvas.transform.rotation = Quaternion.LookRotation(new Vector3(transform.position.x,CameraPos.y,CameraPos.z)-transform.position);
+        UpdateTowerState(TowerBehaviour.Idle);
+        healthBarCanvas.transform.rotation =
+            Quaternion.LookRotation(new Vector3(transform.position.x, CameraPos.y, CameraPos.z) - transform.position);
     }
 
     protected override void LateUpdate()
     {
-        
     }
 
     public void UpdateTowerState(TowerBehaviour newState)
@@ -39,11 +55,7 @@ public class Tower : Entity
 
         if (newState == TowerBehaviour.Idle)
         {
-            if (isMainTower)
-            {
-                //_currentCoroutine = StartCoroutine(WaitingForAction());
-            }
-            else
+            if (!isMainTower)
             {
                 UpdateTowerState(TowerBehaviour.FindingClosestTarget);
             }
@@ -62,13 +74,21 @@ public class Tower : Entity
         if (newState == TowerBehaviour.Dying)
         {
             gameObject.SetActive(false);
+            if (isMainTower) return;
+
+            if (isAlly)
+            {
+                EntityManager.Instance.enemyMainTower.UpdateTowerState(TowerBehaviour.FindingClosestTarget);
+            }
+            else
+            {
+                EntityManager.Instance.allyMainTower.UpdateTowerState(TowerBehaviour.FindingClosestTarget);
+            }
         }
 
         OnTowerStateChanged?.Invoke(newState);
     }
 
-    /* find the closest target in range
-    act*/
     private IEnumerator FindingTarget()
     {
         while (currentBehaviour == TowerBehaviour.FindingClosestTarget)

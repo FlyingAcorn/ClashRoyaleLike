@@ -107,8 +107,7 @@ MonoBehaviour:
   isAlly: 0
   health: 0
   projectile: {fileID: -5510668088678675363, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
-  isMainTower: 0
-  isATowerDestroyed: 0
+  isMainTower: 1
   currentBehaviour: 0
 --- !u!64 &5877263216335811910
 MeshCollider:
