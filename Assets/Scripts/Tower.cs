@@ -9,6 +9,9 @@ public class Tower : Entity
     [SerializeField] private Weapon projectile;
     private Coroutine _currentCoroutine;
     [SerializeField] private bool isMainTower;
+    private Entity _attackTarget;
+    private float _attackTargetColliderOffset;
+    private Vector3 _attackTargetPos;
 
 
     public override float Health
@@ -105,18 +108,23 @@ public class Tower : Entity
 
     private IEnumerator Acting()
     {
-        var direction = target.transform.position - transform.position + new Vector3(0, 10, 0); // y değeri offset
+        _attackTarget = target;
+        _attackTargetColliderOffset = target.ColliderOffset();
+        _attackTargetPos = target.transform.position;
+        var direction =
+            _attackTargetPos - transform.position + new Vector3(0, 10, 0); // y değeri offset
         var arrow = Instantiate(projectile, transform.position + new Vector3(0, 5, 0),
             Quaternion.LookRotation(direction));
         arrow.owner = this;
         var time = FindClosestTarget() / 20; // 20 is speedper pixel
-        var _targetsPos = target.transform.position;
+        var _targetsPos = _attackTargetPos;
         arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time).OnComplete(() =>
-            arrow.OnHit(target));
-        ;
-
+        {
+            if (!_attackTarget) return;
+            arrow.OnHit(_attackTarget);
+        });
         yield return new WaitForSeconds(entityClassType.attackSpeed);
-        if (FindClosestTarget() - target.ColliderOffset() > entityClassType.rangeRadius)
+        if (FindClosestTarget() - _attackTargetColliderOffset > entityClassType.rangeRadius)
         {
             UpdateTowerState(TowerBehaviour.FindingClosestTarget);
         }
