@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Entity : MonoBehaviour
 {
@@ -10,21 +11,39 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected Animator myAnimator;
     [SerializeField] protected new Collider collider;
     [SerializeField] protected Entity target;
+    [SerializeField] private Slider healthBarSlider;
+    [SerializeField] private Image healthBarImage;
+    
+    
     private bool _isFlying;
     public bool isAlly;
-    [SerializeField]private int health;
+    [SerializeField]private float health;
 
-    public int Health
+    public float Health
     {
         get => health;
-        set => health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
+        set
+        {
+            healthBarSlider.gameObject.SetActive(true);
+            healthBarSlider.DOValue(health / entityClassType.maxHealth, 1)/*.OnComplete((() =>
+            {
+                DOVirtual.DelayedCall(1, (() => healthBarSlider.gameObject.SetActive(false))); }))*/; 
+            health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
+        }
     }
 
     protected virtual void Awake()
     {
         _isFlying = entityClassType.isFlying;
-        Health = entityClassType.maxHealth;
+        health = entityClassType.maxHealth;
+        healthBarImage.color = isAlly ? healthBarImage.color : Color.red;
     }
+
+    protected void Start()
+    {
+        
+    }
+
     public void CheckHealth()
     {
         if (Health <= 0)

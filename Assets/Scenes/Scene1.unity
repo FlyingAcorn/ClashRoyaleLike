@@ -130,6 +130,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 582076505}
     m_Modifications:
+    - target: {fileID: 2310355617648244696, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310355617648244696, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2440091411812151600, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
       propertyPath: m_Name
       value: building_tower_B_red (1)
@@ -3078,6 +3086,14 @@ PrefabInstance:
       propertyPath: isAlly
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8105280855744640238, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105280855744640238, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4678,6 +4694,14 @@ PrefabInstance:
       propertyPath: isAlly
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8105280855744640238, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105280855744640238, guid: 25d5ff626b15e1b4eb97f81f9e57e1a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4729,6 +4753,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3426325989853783845, guid: 9540e1e53e199b84e88dbebb90f88fa0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004112038454630036, guid: 9540e1e53e199b84e88dbebb90f88fa0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004112038454630036, guid: 9540e1e53e199b84e88dbebb90f88fa0, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7567277593349160898, guid: 9540e1e53e199b84e88dbebb90f88fa0, type: 3}
@@ -5002,6 +5034,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 582076505}
     m_Modifications:
+    - target: {fileID: 2310355617648244696, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310355617648244696, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2440091411812151600, guid: 7542ceadbb257cd4c86f9a5da51fc75a, type: 3}
       propertyPath: m_Name
       value: building_tower_B_red
@@ -5177,6 +5217,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1078660870585215536, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274716784725543548, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274716784725543548, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117049008956586965, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}

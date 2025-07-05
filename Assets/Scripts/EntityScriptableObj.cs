@@ -7,7 +7,7 @@ public class EntityScriptableObj : ScriptableObject
 {
     public bool isFlying;
     public bool isRanged;
-    public int maxHealth;
+    public float maxHealth;
     public int damage;
     public float attackSpeed;
     public float speed;
