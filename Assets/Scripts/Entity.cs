@@ -37,10 +37,8 @@ public abstract class Entity : MonoBehaviour
         CameraPos = Camera.main.transform.position;
         _isFlying = entityClassType.isFlying;
         health = entityClassType.maxHealth;
-        healthBarCanvas.healthBarSlider.direction = Slider.Direction.RightToLeft;
         if (isAlly) return;
         healthBarCanvas.healthBarColour.color = Color.red;
-        healthBarCanvas.healthBarSlider.transform.rotation = new Quaternion(0, 180, 0, 0);
     }
 
     protected virtual void LateUpdate()
