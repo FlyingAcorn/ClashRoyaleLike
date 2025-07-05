@@ -14,6 +14,7 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
     private Vector3 _pointOfSummon;
     [SerializeField] private LayerMask layerMask;
     
+    
     public static event Action<AiState> OnAiStateChanged;
     public enum AiState
     {
@@ -116,12 +117,13 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
         }
         var randomRange = Random.onUnitSphere * chosenCard.entities[0].entityClassType.rangeRadius;
         var offset = new Vector3(randomRange.x, 0, randomRange.z);
-        Ray ray = new Ray(Camera.main.transform.position,(Camera.main.transform.position-chosenPoint+offset).normalized);
-        RaycastHit hit;
-        while (Physics.Raycast(ray,out hit,100,layerMask))
+        Ray ray = new Ray(Camera.main.transform.position,(chosenPoint+offset-Camera.main.transform.position).normalized);
+        while (!Physics.Raycast(ray, out var hit, 100,layerMask)||
+               hit.transform.TryGetComponent(out PlayZone zone) && chosenCard.cardInfo.canInvade ? !this : zone.isAllyZone) // this kullanma nedenin empty yapamadın
         {
             randomRange = Random.onUnitSphere * chosenCard.entities[0].entityClassType.rangeRadius;
             offset = new Vector3(randomRange.x, 0, randomRange.z);
+            ray = new Ray(Camera.main.transform.position,(chosenPoint+offset-Camera.main.transform.position).normalized);
            // yield return null;
         }
         _pointOfSummon = chosenPoint + offset;

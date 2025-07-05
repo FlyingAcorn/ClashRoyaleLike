@@ -8,9 +8,12 @@ public class Tower : Entity
 {
     [SerializeField] private Weapon projectile;
     private Coroutine _currentCoroutine;
+    [SerializeField] private bool isMainTower;
+    public bool isATowerDestroyed;
 
     public enum TowerBehaviour
     {
+        Idle,
         FindingClosestTarget,
         Acting,
         Dying
@@ -28,6 +31,17 @@ public class Tower : Entity
     {
         currentBehaviour = newState;
 
+        if (newState == TowerBehaviour.Idle)
+        {
+            if (isMainTower)
+            {
+                //_currentCoroutine = StartCoroutine(WaitingForAction());
+            }
+            else
+            {
+                UpdateTowerState(TowerBehaviour.FindingClosestTarget);
+            }
+        }
         if (newState == TowerBehaviour.FindingClosestTarget)
         {
             _currentCoroutine = StartCoroutine(FindingTarget());
@@ -85,7 +99,6 @@ public class Tower : Entity
 
         yield return null;
     }
-
     protected override void DeathSequence()
     {
         UpdateTowerState(TowerBehaviour.Dying);

@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 76077167}
   - component: {fileID: 76077169}
   - component: {fileID: 76077168}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 122339254}
   - component: {fileID: 122339253}
   - component: {fileID: 122339255}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardMiddleRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 214832257}
   - component: {fileID: 214832259}
   - component: {fileID: 214832258}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MaxManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 246222586}
   - component: {fileID: 246222588}
   - component: {fileID: 246222587}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253483790}
   - component: {fileID: 253483791}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ManaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 282164682}
   - component: {fileID: 282164684}
   - component: {fileID: 282164683}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextCardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 354240369}
   - component: {fileID: 354240368}
   - component: {fileID: 354240370}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardMiddleLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 357785916}
   - component: {fileID: 357785915}
   - component: {fileID: 357785917}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardRightMost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1293,7 +1293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 373298119}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 422535945}
   - component: {fileID: 422535947}
   - component: {fileID: 422535946}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 424883651}
   - component: {fileID: 424883653}
   - component: {fileID: 424883652}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1590,7 +1590,7 @@ GameObject:
   - component: {fileID: 492075390}
   - component: {fileID: 492075392}
   - component: {fileID: 492075391}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 517293702}
   - component: {fileID: 517293701}
   - component: {fileID: 517293703}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ChoosePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1957,7 @@ GameObject:
   - component: {fileID: 598910858}
   - component: {fileID: 598910860}
   - component: {fileID: 598910859}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2084,7 +2084,7 @@ GameObject:
   - component: {fileID: 630487726}
   - component: {fileID: 630487725}
   - component: {fileID: 630487724}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2185,7 +2185,7 @@ GameObject:
   - component: {fileID: 630964784}
   - component: {fileID: 630964786}
   - component: {fileID: 630964785}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2421,7 +2421,7 @@ GameObject:
   - component: {fileID: 693729865}
   - component: {fileID: 693729867}
   - component: {fileID: 693729866}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2834,7 +2834,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 941013252}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3625,7 +3625,7 @@ GameObject:
   - component: {fileID: 1771638701}
   - component: {fileID: 1771638703}
   - component: {fileID: 1771638702}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3836,7 +3836,7 @@ MonoBehaviour:
   chosenCard: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   state: 0
 --- !u!4 &1820601043
 Transform:
@@ -3899,7 +3899,7 @@ GameObject:
   - component: {fileID: 1855157152}
   - component: {fileID: 1855157154}
   - component: {fileID: 1855157153}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4088,7 +4088,7 @@ GameObject:
   - component: {fileID: 1977803429}
   - component: {fileID: 1977803431}
   - component: {fileID: 1977803430}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4291,7 +4291,7 @@ GameObject:
   - component: {fileID: 2001228265}
   - component: {fileID: 2001228264}
   - component: {fileID: 2001228266}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardLeftMost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
