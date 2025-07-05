@@ -11,13 +11,12 @@ public abstract class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (owner.entityClassType.isRanged )return;
-        if (other.TryGetComponent(out Entity target) && owner.isAlly !=target.isAlly)
+        if (owner.entityClassType.isRanged) return;
+        if (other.TryGetComponent(out Entity target) && owner.isAlly != target.isAlly)
         {
             OnHit(target);
             //target.myAnimator.SetTrigger("isHit"); animator public olacak
             target.CheckHealth();
-            
         }
     }
 

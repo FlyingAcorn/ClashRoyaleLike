@@ -105,7 +105,7 @@ MonoBehaviour:
   target: {fileID: 0}
   healthBarSlider: {fileID: 8576494028873806196}
   healthBarImage: {fileID: 1744909105976987058}
-  isAlly: 0
+  isAlly: 1
   health: 0
   projectile: {fileID: -5510668088678675363, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
   isMainTower: 0
@@ -162,8 +162,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2360800857824819248, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360800857824819248, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360800857824819248, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2850009036689538624, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
       propertyPath: m_Pivot.x
@@ -255,11 +263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5747156117138001965, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5747156117138001965, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

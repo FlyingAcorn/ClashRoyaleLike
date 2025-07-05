@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Arrow : Weapon
 {
-    
     public override void OnHit(Entity target)
     {
         target.Health -= owner.entityClassType.damage;

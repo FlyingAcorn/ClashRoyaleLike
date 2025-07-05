@@ -8,5 +8,4 @@ public class PreviewModel : MonoBehaviour
     public Material material;
     public Color toRed;
     public Color toGreen;
-    
 }

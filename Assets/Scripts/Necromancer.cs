@@ -10,15 +10,15 @@ public class Necromancer : Agent
 {
     [SerializeField] private List<Entity> summons;
     [SerializeField] private LayerMask layerMask;
-    
+
 
     protected override IEnumerator Acting()
     {
-        myAnimator.SetBool("isAttacking",true);
-        transform.DOLookAt(target.transform.position,0.25f,AxisConstraint.Y);
+        myAnimator.SetBool("isAttacking", true);
+        transform.DOLookAt(target.transform.position, 0.25f, AxisConstraint.Y);
         yield return new WaitForSeconds(2.20f);
         yield return new WaitForSeconds(entityClassType.attackSpeed);
-        if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
+        if (FindClosestTarget() - target.ColliderOffset() > entityClassType.rangeRadius)
         {
             UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
         }
@@ -26,6 +26,7 @@ public class Necromancer : Agent
         {
             currentCoroutine = StartCoroutine(Acting());
         }
+
         yield return null;
     }
 
@@ -34,33 +35,36 @@ public class Necromancer : Agent
         foreach (var summon in summons)
         {
             summon.isAlly = isAlly;
-           Entity summoned = Instantiate(summon.gameObject,CheckEmptySpace(),Quaternion.identity).GetComponent<Entity>();
+            Entity summoned = Instantiate(summon.gameObject, CheckEmptySpace(), Quaternion.identity)
+                .GetComponent<Entity>();
             EntityManager.Instance.AddEntity(summoned);
         }
-        myAnimator.SetBool("isAttacking",false);
+
+        myAnimator.SetBool("isAttacking", false);
     }
 
     private Vector3 CheckEmptySpace()
     {
-        var xPos = Random.Range(transform.position.x - entityClassType.rangeRadius*0.5f,
-            transform.position.x + entityClassType.rangeRadius*0.5f);
-        var zPos =Random.Range(transform.position.z - entityClassType.rangeRadius*0.5f,
-            transform.position.z + entityClassType.rangeRadius*0.5f); 
+        var xPos = Random.Range(transform.position.x - entityClassType.rangeRadius * 0.5f,
+            transform.position.x + entityClassType.rangeRadius * 0.5f);
+        var zPos = Random.Range(transform.position.z - entityClassType.rangeRadius * 0.5f,
+            transform.position.z + entityClassType.rangeRadius * 0.5f);
         var location = new Vector3(xPos, transform.position.y, zPos);
-        while (Physics.CheckSphere(location,1,layerMask))
+        while (Physics.CheckSphere(location, 1, layerMask))
         {
-            xPos = Random.Range(transform.position.x - entityClassType.rangeRadius*0.5f,
-                transform.position.x + entityClassType.rangeRadius*0.5f);
-            zPos =Random.Range(transform.position.z - entityClassType.rangeRadius*0.5f,
-                transform.position.z + entityClassType.rangeRadius*0.5f); 
+            xPos = Random.Range(transform.position.x - entityClassType.rangeRadius * 0.5f,
+                transform.position.x + entityClassType.rangeRadius * 0.5f);
+            zPos = Random.Range(transform.position.z - entityClassType.rangeRadius * 0.5f,
+                transform.position.z + entityClassType.rangeRadius * 0.5f);
             location = new Vector3(xPos, transform.position.y, zPos);
         }
+
         Debug.Log(location);
         return location;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position+new Vector3(0,0,0),entityClassType.rangeRadius*0.5f);
+        Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0, 0), entityClassType.rangeRadius * 0.5f);
     }
 }

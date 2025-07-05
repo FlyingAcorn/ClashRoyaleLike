@@ -10,11 +10,13 @@ public class GameManager : Singleton<GameManager>
     public Camera mainCamera;
     [SerializeField] private bool inAMatch;
     private float _alliedMana;
+
     public float AlliedMana
     {
         get => _alliedMana;
-        set {
-            if (value >10)
+        set
+        {
+            if (value > 10)
             {
                 _alliedMana = 10;
             }
@@ -24,12 +26,15 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
+
     private float _enemyMana;
+
     public float EnemyMana
     {
         get => _enemyMana;
-        set {
-            if (value >10)
+        set
+        {
+            if (value > 10)
             {
                 _enemyMana = 10;
             }
@@ -39,12 +44,14 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
+
     [SerializeField] private float manaRegenRate;
     public List<Card> alliedDeck;
     public List<Card> allyPlayedCards;
     public List<Card> enemyDeck;
     public List<Card> enemyPlayedCards;
     public static event Action<GameState> OnGameStateChanged;
+
     public enum GameState
     {
         MainMenu,
@@ -55,24 +62,23 @@ public class GameManager : Singleton<GameManager>
     }
 
     public GameState state;
+
     protected override void Awake()
     {
         base.Awake();
-        
     }
 
     private void Start()
     {
         UpdateGameState(GameState.Play);
     }
-    
+
     public void UpdateGameState(GameState newState)
     {
         state = newState;
 
         if (newState == GameState.MainMenu)
         {
-            
         }
 
         if (newState == GameState.Play)
@@ -85,9 +91,10 @@ public class GameManager : Singleton<GameManager>
                 alliedDeck.Shuffle();
                 enemyDeck.Shuffle();
                 UIManager.Instance.choosePanel.UpdateCards
-                    (alliedDeck[0],alliedDeck[1],alliedDeck[2],alliedDeck[3],alliedDeck[4]);
+                    (alliedDeck[0], alliedDeck[1], alliedDeck[2], alliedDeck[3], alliedDeck[4]);
                 inAMatch = true;
             }
+
             StartCoroutine(StartMana());
             EnemyAiManager.Instance.UpdateAiState(EnemyAiManager.AiState.Wait);
         }
@@ -100,10 +107,12 @@ public class GameManager : Singleton<GameManager>
         {
             inAMatch = false;
         }
+
         if (newState == GameState.Defeat)
         {
             inAMatch = false;
         }
+
         OnGameStateChanged?.Invoke(newState);
     }
 
@@ -129,6 +138,7 @@ public class GameManager : Singleton<GameManager>
             allyPlayedCards.Remove(t);
         }
     }
+
     public void EnemyReDrawPile()
     {
         enemyPlayedCards.Shuffle();
@@ -139,14 +149,18 @@ public class GameManager : Singleton<GameManager>
         }
     }
 }
-public static class IListExtensions {
+
+public static class IListExtensions
+{
     /// <summary>
     /// Shuffles the element order of the specified list.
     /// </summary>
-    public static void Shuffle<T>(this IList<T> ts) {
+    public static void Shuffle<T>(this IList<T> ts)
+    {
         var count = ts.Count;
         var last = count - 1;
-        for (var i = 0; i < last; ++i) {
+        for (var i = 0; i < last; ++i)
+        {
             var r = UnityEngine.Random.Range(i, count);
             var tmp = ts[i];
             ts[i] = ts[r];

@@ -8,81 +8,85 @@ using UnityEngine.Serialization;
 
 public abstract class Agent : Entity
 {
-   [SerializeField] private NavMeshAgent myAgent;
-   [SerializeField] private Rigidbody myBody;
-   protected Coroutine currentCoroutine;
+    [SerializeField] private NavMeshAgent myAgent;
+    [SerializeField] private Rigidbody myBody;
+    protected Coroutine currentCoroutine;
 
-   protected override void Awake()
-   {
-       base.Awake();
-       myAgent.speed = entityClassType.speed;
-   }
-   public enum AgentBehaviour
-   {
-       MovingToClosestTarget,
-       Acting,
-       Dying
-   }
-   public static event Action<AgentBehaviour> OnAgentStateChanged;
-   public AgentBehaviour currentBehaviour;
+    protected override void Awake()
+    {
+        base.Awake();
+        myAgent.speed = entityClassType.speed;
+    }
 
-   private void Start()
-   {
-       UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
-   }
-    
-   public void UpdateAgentState(AgentBehaviour newState)
-   {
-       currentBehaviour = newState;
-       
-       if (newState == AgentBehaviour.MovingToClosestTarget)
-       {
-           myAnimator.SetBool("isMoving",true);
-           currentCoroutine = StartCoroutine(AgentMovement());
-       }
+    public enum AgentBehaviour
+    {
+        MovingToClosestTarget,
+        Acting,
+        Dying
+    }
 
-       if (newState == AgentBehaviour.Acting)
-       {
-           myAnimator.SetBool("isMoving",false);
-           currentCoroutine = StartCoroutine(Acting());
-       }
+    public static event Action<AgentBehaviour> OnAgentStateChanged;
+    public AgentBehaviour currentBehaviour;
 
-       if (newState == AgentBehaviour.Dying)
-       {
-           StopCoroutine(currentCoroutine);
-           myAgent.isStopped = true;
-           myAnimator.SetTrigger("isDead");
-           collider.enabled = false;
-           AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
-           var firstClipDuration = clipInfos[0].clip.averageDuration;
-           DOVirtual.DelayedCall(firstClipDuration+2, (() => { Destroy(gameObject); }));
-       }
-       OnAgentStateChanged?.Invoke(newState);
-   }
+    private void Start()
+    {
+        UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
+    }
 
-   private IEnumerator AgentMovement()
-   {
-       myAgent.isStopped = false;
-       FindClosestTarget();
-       while ( currentBehaviour == AgentBehaviour.MovingToClosestTarget )
-       {
-           myAgent.destination = target.transform.position;
-           FindClosestTarget();
-           if (FindClosestTarget()-target.ColliderOffset()<= entityClassType.rangeRadius)
-           {
-               myAgent.isStopped = true;
-               UpdateAgentState( AgentBehaviour.Acting);
-           }
-           yield return null;
-       }
-       yield return null;
-   }
-   protected override void DeathSequence()
-   {
-       UpdateAgentState(AgentBehaviour.Dying);
-   }
-   protected abstract IEnumerator Acting();
-  
+    public void UpdateAgentState(AgentBehaviour newState)
+    {
+        currentBehaviour = newState;
+
+        if (newState == AgentBehaviour.MovingToClosestTarget)
+        {
+            myAnimator.SetBool("isMoving", true);
+            currentCoroutine = StartCoroutine(AgentMovement());
+        }
+
+        if (newState == AgentBehaviour.Acting)
+        {
+            myAnimator.SetBool("isMoving", false);
+            currentCoroutine = StartCoroutine(Acting());
+        }
+
+        if (newState == AgentBehaviour.Dying)
+        {
+            StopCoroutine(currentCoroutine);
+            myAgent.isStopped = true;
+            myAnimator.SetTrigger("isDead");
+            collider.enabled = false;
+            AnimatorClipInfo[] clipInfos = myAnimator.GetCurrentAnimatorClipInfo(0);
+            var firstClipDuration = clipInfos[0].clip.averageDuration;
+            DOVirtual.DelayedCall(firstClipDuration + 2, (() => { Destroy(gameObject); }));
+        }
+
+        OnAgentStateChanged?.Invoke(newState);
+    }
+
+    private IEnumerator AgentMovement()
+    {
+        myAgent.isStopped = false;
+        FindClosestTarget();
+        while (currentBehaviour == AgentBehaviour.MovingToClosestTarget)
+        {
+            myAgent.destination = target.transform.position;
+            FindClosestTarget();
+            if (FindClosestTarget() - target.ColliderOffset() <= entityClassType.rangeRadius)
+            {
+                myAgent.isStopped = true;
+                UpdateAgentState(AgentBehaviour.Acting);
+            }
+
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    protected override void DeathSequence()
+    {
+        UpdateAgentState(AgentBehaviour.Dying);
+    }
+
+    protected abstract IEnumerator Acting();
 }
-
-

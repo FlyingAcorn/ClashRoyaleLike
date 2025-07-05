@@ -106,7 +106,7 @@ MonoBehaviour:
   target: {fileID: 0}
   healthBarSlider: {fileID: 7802208817449471184}
   healthBarImage: {fileID: 249380110580150294}
-  isAlly: 1
+  isAlly: 0
   health: 0
   projectile: {fileID: -5510668088678675363, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
   isMainTower: 0
@@ -324,6 +324,14 @@ PrefabInstance:
     - target: {fileID: 4960648305467437317, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
       propertyPath: m_Name
       value: HelathBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747156117138001965, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747156117138001965, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

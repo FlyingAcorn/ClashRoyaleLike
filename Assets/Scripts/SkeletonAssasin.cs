@@ -14,10 +14,9 @@ public class SkeletonAssasin : Agent
 
     public void Hit()
     {
-        
     }
+
     public void Shoot()
     {
-        
     }
 }

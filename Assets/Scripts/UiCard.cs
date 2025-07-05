@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandler
+public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHandler
 {
     public Card currentCard;
     [SerializeField] private Canvas myCanvas;
@@ -16,8 +16,8 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     private bool _canSummon;
     private Vector3 _pointOfSummon;
     private PreviewModel _previewModel;
-    
-    
+
+
     public Image myImage;
     public TextMeshProUGUI myManaText;
     private Vector3 _localPosition;
@@ -48,11 +48,12 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         _previewModel.gameObject.SetActive(false);
         infoText.gameObject.SetActive(true);
     }
+
     public void OnDrag(PointerEventData eventData)
     {
         _canSummon = false;
-        myTransform.anchoredPosition += eventData.delta/myCanvas.scaleFactor;
-        infoText.gameObject.transform.position = eventData.position+ new Vector2(0,125);
+        myTransform.anchoredPosition += eventData.delta / myCanvas.scaleFactor;
+        infoText.gameObject.transform.position = eventData.position + new Vector2(0, 125);
         Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
         if (!Physics.Raycast(ray, out var hit, 100, mask))
         {
@@ -60,6 +61,7 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
             infoText.text = "";
             return;
         }
+
         //Debug.Log(hit.point);
         if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone)
         {
@@ -70,6 +72,7 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
             infoText.text = "You cannot summon.";
             return;
         }
+
         if (GameManager.Instance.AlliedMana < currentCard.cardInfo.mana)
         {
             _previewModel.gameObject.transform.position = hit.point;
@@ -94,11 +97,11 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
     public void OnEndDrag(PointerEventData eventData)
     {
         myManaText.enabled = true;
-        myTransform.localPosition =_localPosition;
-        myTransform.anchorMin =_anchorMin;
+        myTransform.localPosition = _localPosition;
+        myTransform.anchorMin = _anchorMin;
         myTransform.anchorMax = _anchorMax;
-        myTransform.anchoredPosition =_anchoredPosition;
-        myTransform.sizeDelta =_sizeDelta;
+        myTransform.anchoredPosition = _anchoredPosition;
+        myTransform.sizeDelta = _sizeDelta;
         myTransform.pivot = _pivot;
         myTransform.localScale = _scale;
         myTransform.localRotation = _rotation;
@@ -114,11 +117,12 @@ public class UiCard : MonoBehaviour,IEndDragHandler,IBeginDragHandler,IDragHandl
         {
             t.isAlly = true;
         }
+
         Instantiate(currentCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
         GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
         GameManager.Instance.alliedDeck.Remove(currentCard);
         GameManager.Instance.allyPlayedCards.Add(currentCard);
         var allydeck = GameManager.Instance.alliedDeck;
-        UIManager.Instance.choosePanel.UpdateCards(allydeck[0],allydeck[1],allydeck[2],allydeck[3],allydeck[4]);
+        UIManager.Instance.choosePanel.UpdateCards(allydeck[0], allydeck[1], allydeck[2], allydeck[3], allydeck[4]);
     }
 }

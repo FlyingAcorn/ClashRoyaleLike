@@ -7,29 +7,29 @@ using UnityEngine;
 public class Knight : Agent
 {
     [SerializeField] private MeshCollider hitCollider;
-    
+
     protected override IEnumerator Acting()
     {
-        myAnimator.SetBool("isAttacking",true);
+        myAnimator.SetBool("isAttacking", true);
         hitCollider.enabled = true;
-        transform.DOLookAt(target.transform.position,0.25f,AxisConstraint.Y);
+        transform.DOLookAt(target.transform.position, 0.25f, AxisConstraint.Y);
         yield return new WaitForSeconds(1f);
         yield return new WaitForSeconds(entityClassType.attackSpeed);
-        if (FindClosestTarget()-target.ColliderOffset()> entityClassType.rangeRadius)
+        if (FindClosestTarget() - target.ColliderOffset() > entityClassType.rangeRadius)
         {
             UpdateAgentState(AgentBehaviour.MovingToClosestTarget);
         }
         else
         {
-           currentCoroutine = StartCoroutine(Acting());
+            currentCoroutine = StartCoroutine(Acting());
         }
+
         yield return null;
     }
 
     public void hit() // AnimEvent
     {
         hitCollider.enabled = false;
-        myAnimator.SetBool("isAttacking",false);
+        myAnimator.SetBool("isAttacking", false);
     }
-    
 }

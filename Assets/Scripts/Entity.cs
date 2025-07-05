@@ -13,11 +13,11 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected Entity target;
     [SerializeField] private Slider healthBarSlider;
     [SerializeField] private Image healthBarImage;
-    
-    
+
+
     private bool _isFlying;
     public bool isAlly;
-    [SerializeField]private float health;
+    [SerializeField] private float health;
     private Tweener _healthTween;
 
     public float Health
@@ -27,7 +27,7 @@ public abstract class Entity : MonoBehaviour
         {
             _healthTween.Kill();
             healthBarSlider.gameObject.SetActive(true);
-            _healthTween = healthBarSlider.DOValue(health / entityClassType.maxHealth, 1); 
+            _healthTween = healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
             health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
         }
     }
@@ -43,13 +43,12 @@ public abstract class Entity : MonoBehaviour
 
     protected void Start()
     {
-        
     }
 
     public void CheckHealth()
     {
         if (Health <= 0)
-        { 
+        {
             DeathSequence();
             if (isAlly)
             {
@@ -60,12 +59,13 @@ public abstract class Entity : MonoBehaviour
                 EntityManager.Instance.enemies.Remove(this);
             }
         }
-    } 
+    }
+
     protected float FindClosestTarget()
     {
         Entity minDistanceEntity = null;
         var minDistance = Mathf.Infinity;
-       
+
         foreach (var entity in isAlly ? EntityManager.Instance.enemies : EntityManager.Instance.allies)
         {
             float dis = Vector3.Distance(entity.transform.position, transform.position);
@@ -75,12 +75,15 @@ public abstract class Entity : MonoBehaviour
                 minDistanceEntity = entity;
             }
         }
+
         target = minDistanceEntity;
         return minDistance;
     }
+
     protected abstract void DeathSequence();
+
     public float ColliderOffset()
     {
-        return collider.bounds.size.x*0.5f;
+        return collider.bounds.size.x * 0.5f;
     }
 }

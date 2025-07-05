@@ -13,9 +13,10 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
     [SerializeField] private Card chosenCard;
     private Vector3 _pointOfSummon;
     [SerializeField] private LayerMask layerMask;
-    
-    
+
+
     public static event Action<AiState> OnAiStateChanged;
+
     public enum AiState
     {
         Wait,
@@ -24,6 +25,7 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
     }
 
     public AiState state;
+
     protected override void Awake()
     {
         base.Awake();
@@ -32,16 +34,17 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
     private void Start()
     {
     }
-    
+
     public void UpdateAiState(AiState newState)
     {
         state = newState;
         if (newState == AiState.Wait)
         {
             var enemyDeck = GameManager.Instance.enemyDeck;
-            UpdateCards(enemyDeck[0],enemyDeck[1],enemyDeck[2],enemyDeck[3]);
+            UpdateCards(enemyDeck[0], enemyDeck[1], enemyDeck[2], enemyDeck[3]);
             StartCoroutine(SelectCard());
         }
+
         if (newState == AiState.Decide)
         {
             //ışınlanacağı pozizyonu seçecek seçtiği pozizyonun etrafına randomrange ile hafif offset verecek
@@ -51,28 +54,31 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
             StartCoroutine(SelectPosition());
             Debug.Log(chosenCard.name);
         }
+
         if (newState == AiState.Play)
         {
             foreach (var t in chosenCard.entities)
             {
                 t.isAlly = false;
             }
+
             Instantiate(chosenCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
             GameManager.Instance.EnemyMana -= chosenCard.cardInfo.mana;
             GameManager.Instance.enemyDeck.Remove(chosenCard);
             GameManager.Instance.enemyPlayedCards.Add(chosenCard);
             UpdateAiState(AiState.Wait);
         }
+
         OnAiStateChanged?.Invoke(newState);
     }
 
-    private void UpdateCards(Card leftMost, Card leftMiddle, Card middleRight,Card rightMost)
+    private void UpdateCards(Card leftMost, Card leftMiddle, Card middleRight, Card rightMost)
     {
         currentHand[0] = leftMost;
         currentHand[1] = leftMiddle;
         currentHand[2] = middleRight;
         currentHand[3] = rightMost;
-        if (GameManager.Instance.enemyDeck.Count ==5)
+        if (GameManager.Instance.enemyDeck.Count == 5)
         {
             GameManager.Instance.EnemyReDrawPile();
         }
@@ -81,11 +87,12 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
     private IEnumerator SelectCard()
     {
         var orderedHand = currentHand.OrderByDescending(t => t.cardInfo.mana).Reverse().ToList();
-        var randomCard = Random.Range(0,4);
+        var randomCard = Random.Range(0, 4);
         while (GameManager.Instance.EnemyMana < orderedHand[randomCard].cardInfo.mana)
         {
             yield return null;
         }
+
         chosenCard = orderedHand[Random.Range(0, randomCard)];
         UpdateAiState(AiState.Decide);
     }
@@ -95,9 +102,10 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
         Vector3 chosenPoint;
         if (chosenCard.cardInfo.canInvade)
         {
-            chosenPoint = Random.Range(0,4) <=2 ?
-                EntityManager.Instance.allies.First(t => t.Health == EntityManager.Instance.allies.Min(x=>x.Health)).transform.position :
-                allyZone.nodes[Random.Range(0, allyZone.nodes.Count)].transform.position;
+            chosenPoint = Random.Range(0, 4) <= 2
+                ? EntityManager.Instance.allies.First(t => t.Health == EntityManager.Instance.allies.Min(x => x.Health))
+                    .transform.position
+                : allyZone.nodes[Random.Range(0, allyZone.nodes.Count)].transform.position;
         }
         else
         {
@@ -115,20 +123,25 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
                 (false, false) => enemyZone.nodes[Random.Range(0, enemyZone.nodes.Count)].transform.position
             };
         }
+
         var randomRange = Random.onUnitSphere * chosenCard.entities[0].entityClassType.rangeRadius;
         var offset = new Vector3(randomRange.x, 0, randomRange.z);
-        Ray ray = new Ray(Camera.main.transform.position,(chosenPoint+offset-Camera.main.transform.position).normalized);
-        while (!Physics.Raycast(ray, out var hit, 100,layerMask)||
-               hit.transform.TryGetComponent(out PlayZone zone) && chosenCard.cardInfo.canInvade ? !this : zone.isAllyZone) // this kullanma nedenin empty yapamadın
+        Ray ray = new Ray(Camera.main.transform.position,
+            (chosenPoint + offset - Camera.main.transform.position).normalized);
+        while (!Physics.Raycast(ray, out var hit, 100, layerMask) ||
+               hit.transform.TryGetComponent(out PlayZone zone) && chosenCard.cardInfo.canInvade
+                   ? !this
+                   : zone.isAllyZone) // this kullanma nedenin empty yapamadın
         {
             randomRange = Random.onUnitSphere * chosenCard.entities[0].entityClassType.rangeRadius;
             offset = new Vector3(randomRange.x, 0, randomRange.z);
-            ray = new Ray(Camera.main.transform.position,(chosenPoint+offset-Camera.main.transform.position).normalized);
-           // yield return null;
+            ray = new Ray(Camera.main.transform.position,
+                (chosenPoint + offset - Camera.main.transform.position).normalized);
+            // yield return null;
         }
+
         _pointOfSummon = chosenPoint + offset;
         UpdateAiState(AiState.Play);
         yield return null;
     }
-    
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EntityInfo",menuName = "ScriptableObj/EntityInfo")]
+[CreateAssetMenu(fileName = "EntityInfo", menuName = "ScriptableObj/EntityInfo")]
 public class EntityScriptableObj : ScriptableObject
 {
     public bool isFlying;
@@ -13,4 +13,3 @@ public class EntityScriptableObj : ScriptableObject
     public float speed;
     public float rangeRadius;
 }
-

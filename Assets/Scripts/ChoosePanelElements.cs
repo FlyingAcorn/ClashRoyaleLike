@@ -12,11 +12,13 @@ public class ChoosePanelElements : MonoBehaviour
     public List<UiCard> uiCards;
     public Image nextCardImage;
     public TextMeshProUGUI currentManaText;
+
     public TextMeshProUGUI timerText;
+
     // Game managerden aldığı verilere gore bu paneldeki şeylerin değerlerini değiştirecek
     //ui cards classı kendi en end vs durumlarında mana ve liste değerlerini değiştirecek
     // deck eleman sayısı 5 ise played cards shuffle at ve geri ekle yapacak
-    public void UpdateCards(Card leftMost, Card leftMiddle, Card middleRight,Card rightMost,Card nextCard)
+    public void UpdateCards(Card leftMost, Card leftMiddle, Card middleRight, Card rightMost, Card nextCard)
     {
         uiCards[0].currentCard = leftMost;
         uiCards[1].currentCard = leftMiddle;
@@ -28,7 +30,8 @@ public class ChoosePanelElements : MonoBehaviour
             t.myManaText.text = t.currentCard.cardInfo.mana.ToString();
             t.myImage.sprite = t.currentCard.cardInfo.image;
         }
-        if (GameManager.Instance.alliedDeck.Count ==5)
+
+        if (GameManager.Instance.alliedDeck.Count == 5)
         {
             GameManager.Instance.AllyReDrawPile();
         }

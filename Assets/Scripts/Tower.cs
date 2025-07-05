@@ -42,6 +42,7 @@ public class Tower : Entity
                 UpdateTowerState(TowerBehaviour.FindingClosestTarget);
             }
         }
+
         if (newState == TowerBehaviour.FindingClosestTarget)
         {
             _currentCoroutine = StartCoroutine(FindingTarget());
@@ -85,8 +86,9 @@ public class Tower : Entity
         var time = FindClosestTarget() / 20; // 20 is speedper pixel
         var _targetsPos = target.transform.position;
         arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time).OnComplete(() =>
-            arrow.OnHit(target));;
-        
+            arrow.OnHit(target));
+        ;
+
         yield return new WaitForSeconds(entityClassType.attackSpeed);
         if (FindClosestTarget() - target.ColliderOffset() > entityClassType.rangeRadius)
         {
@@ -99,6 +101,7 @@ public class Tower : Entity
 
         yield return null;
     }
+
     protected override void DeathSequence()
     {
         UpdateTowerState(TowerBehaviour.Dying);
