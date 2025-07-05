@@ -43,7 +43,6 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        myManaText.enabled = false;
         _previewModel = Instantiate(currentCard.cardInfo.previewModel);
         _previewModel.gameObject.SetActive(false);
         infoText.gameObject.SetActive(true);
@@ -57,17 +56,20 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
         Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
         if (!Physics.Raycast(ray, out var hit, 100, mask))
         {
+            myImage.enabled = true;
+            myManaText.enabled = true;
             _previewModel.gameObject.SetActive(false);
             infoText.text = "";
             return;
         }
 
+        myManaText.enabled = false;
+        myImage.enabled = false;
+        _previewModel.gameObject.transform.position = hit.point;
+        _previewModel.gameObject.SetActive(true);
         //Debug.Log(hit.point);
         if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone)
         {
-            _previewModel.gameObject.transform.position = hit.point;
-            myImage.enabled = false;
-            _previewModel.gameObject.SetActive(true);
             _previewModel.material.color = _previewModel.toRed;
             infoText.text = "You cannot summon.";
             return;
@@ -75,18 +77,12 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
 
         if (GameManager.Instance.AlliedMana < currentCard.cardInfo.mana)
         {
-            _previewModel.gameObject.transform.position = hit.point;
-            myImage.enabled = false;
-            _previewModel.gameObject.SetActive(true);
             _previewModel.material.color = _previewModel.toRed;
             infoText.text = "You need" + " " + (int)GameManager.Instance.AlliedMana + "/" + currentCard.cardInfo.mana +
                             " to summon this.";
         }
         else
         {
-            _previewModel.gameObject.transform.position = hit.point;
-            myImage.enabled = false;
-            _previewModel.gameObject.SetActive(true);
             _previewModel.material.color = _previewModel.toGreen;
             _pointOfSummon = hit.point;
             _canSummon = true;
@@ -117,6 +113,7 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
         {
             t.isAlly = true;
         }
+
         Instantiate(currentCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.entitiesOnMap.transform);
         GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
         GameManager.Instance.alliedDeck.Remove(currentCard);
