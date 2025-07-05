@@ -18,16 +18,16 @@ public abstract class Entity : MonoBehaviour
     private bool _isFlying;
     public bool isAlly;
     [SerializeField]private float health;
+    private Tweener _healthTween;
 
     public float Health
     {
         get => health;
         set
         {
+            _healthTween.Kill();
             healthBarSlider.gameObject.SetActive(true);
-            healthBarSlider.DOValue(health / entityClassType.maxHealth, 1)/*.OnComplete((() =>
-            {
-                DOVirtual.DelayedCall(1, (() => healthBarSlider.gameObject.SetActive(false))); }))*/; 
+            _healthTween = healthBarSlider.DOValue(health / entityClassType.maxHealth, 1); 
             health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
         }
     }
@@ -36,7 +36,9 @@ public abstract class Entity : MonoBehaviour
     {
         _isFlying = entityClassType.isFlying;
         health = entityClassType.maxHealth;
-        healthBarImage.color = isAlly ? healthBarImage.color : Color.red;
+        if (isAlly) return;
+        healthBarImage.color = Color.red;
+        healthBarSlider.transform.rotation = new Quaternion(0, 180, 0, 0);
     }
 
     protected void Start()

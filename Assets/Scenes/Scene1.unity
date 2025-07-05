@@ -5235,6 +5235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: building_barracks_blue
       objectReference: {fileID: 0}
+    - target: {fileID: 9112404335514599345, guid: 13cc0a5031eca3f448a7723fff8a5015, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
