@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : Singleton<UIManager>
 {
     public ChoosePanelElements choosePanel;
+    public InGamePanelElements inGamePanel;
 
 
     // Start is called before the first frame update

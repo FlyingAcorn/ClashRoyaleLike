@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Camera mainCamera;
     [SerializeField] private bool inAMatch;
     private float _alliedMana;
+    public float elapsedTime;
 
     public float AlliedMana
     {
@@ -88,6 +89,7 @@ public class GameManager : Singleton<GameManager>
                 //reset values shuffle deck
                 AlliedMana = 0;
                 EnemyMana = 0;
+                elapsedTime = 0;
                 alliedDeck.Shuffle();
                 enemyDeck.Shuffle();
                 UIManager.Instance.choosePanel.UpdateCards
@@ -96,6 +98,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             StartCoroutine(StartMana());
+            StartCoroutine(Timer());
             EnemyAiManager.Instance.UpdateAiState(EnemyAiManager.AiState.Wait);
         }
 
@@ -125,6 +128,30 @@ public class GameManager : Singleton<GameManager>
             UIManager.Instance.choosePanel.manaSlider.value = _alliedMana;
             var mana = (int)_alliedMana; // verimsiz olabilir
             UIManager.Instance.choosePanel.currentManaText.text = mana.ToString();
+            yield return null;
+        }
+    }
+
+    private IEnumerator Timer()
+    {
+        while (state == GameState.Play)
+        {
+            elapsedTime += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(elapsedTime / 60);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60);
+            if (minutes == 1)
+            {
+                manaRegenRate = 1.2f;
+            }
+            else if (minutes == 2)
+            {
+                manaRegenRate = 1.6f;
+            }
+            else if (minutes == 3)
+            {
+                manaRegenRate = 2f;
+            }
+            UIManager.Instance.inGamePanel.elapsedTime.text = string.Format("{0:00}:{1:00}",minutes,seconds);
             yield return null;
         }
     }
