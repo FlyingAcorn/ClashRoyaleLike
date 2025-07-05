@@ -11,14 +11,14 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected Animator myAnimator;
     [SerializeField] protected new Collider collider;
     [SerializeField] protected Entity target;
-    [SerializeField] private Slider healthBarSlider;
-    [SerializeField] private Image healthBarImage;
+    [SerializeField] protected HealthBarCanvas healthBarCanvas;
 
 
     private bool _isFlying;
     public bool isAlly;
     [SerializeField] private float health;
     private Tweener _healthTween;
+    protected Vector3 CameraPos;
 
     public float Health
     {
@@ -26,19 +26,28 @@ public abstract class Entity : MonoBehaviour
         set
         {
             _healthTween.Kill();
-            healthBarSlider.gameObject.SetActive(true);
-            _healthTween = healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
+            healthBarCanvas.healthBarSlider.gameObject.SetActive(true);
+            _healthTween = healthBarCanvas.healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
             health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
         }
     }
 
     protected virtual void Awake()
     {
+        CameraPos = Camera.main.transform.position;
         _isFlying = entityClassType.isFlying;
         health = entityClassType.maxHealth;
         if (isAlly) return;
-        healthBarImage.color = Color.red;
-        healthBarSlider.transform.rotation = new Quaternion(0, 180, 0, 0);
+        healthBarCanvas.healthBarColour.color = Color.red;
+        healthBarCanvas.healthBarSlider.transform.rotation = new Quaternion(0, 180, 0, 0);
+    }
+
+    protected virtual void LateUpdate()
+    {
+        if (healthBarCanvas.healthBarSlider.gameObject.activeSelf)
+        {
+            healthBarCanvas.transform.rotation = Quaternion.LookRotation(new Vector3(transform.position.x,CameraPos.y,CameraPos.z)-transform.position);
+        }
     }
 
     protected void Start()

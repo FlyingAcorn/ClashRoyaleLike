@@ -103,8 +103,7 @@ MonoBehaviour:
   myAnimator: {fileID: 0}
   collider: {fileID: 2367645774988547754}
   target: {fileID: 0}
-  healthBarSlider: {fileID: 8576494028873806196}
-  healthBarImage: {fileID: 1744909105976987058}
+  healthBarCanvas: {fileID: 5748612968240255943}
   isAlly: 1
   health: 0
   projectile: {fileID: -5510668088678675363, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
@@ -274,15 +273,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
---- !u!114 &1744909105976987058 stripped
+--- !u!114 &5748612968240255943 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7829492403350558691, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4276156043641489814, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
   m_PrefabInstance: {fileID: 8399451132456213073}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 525d51f5858459d46af9308a44305f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &5989114963741271057 stripped
@@ -290,14 +289,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2850009036689538624, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
   m_PrefabInstance: {fileID: 8399451132456213073}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8576494028873806196 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 258125389338389285, guid: 65f569d7d83703a4884f52571aec5829, type: 3}
-  m_PrefabInstance: {fileID: 8399451132456213073}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

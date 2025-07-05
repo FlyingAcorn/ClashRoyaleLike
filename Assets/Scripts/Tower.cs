@@ -25,6 +25,12 @@ public class Tower : Entity
     private void Start()
     {
         UpdateTowerState(TowerBehaviour.FindingClosestTarget);
+        healthBarCanvas.transform.rotation = Quaternion.LookRotation(new Vector3(transform.position.x,CameraPos.y,CameraPos.z)-transform.position);
+    }
+
+    protected override void LateUpdate()
+    {
+        
     }
 
     public void UpdateTowerState(TowerBehaviour newState)
