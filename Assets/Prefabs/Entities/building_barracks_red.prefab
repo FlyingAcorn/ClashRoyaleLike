@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8323257568976959951}
   - component: {fileID: 5877263216335811910}
   - component: {fileID: 133862999518050427}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: building_barracks_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}

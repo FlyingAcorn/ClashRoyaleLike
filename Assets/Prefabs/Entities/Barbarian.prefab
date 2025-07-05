@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 1973919435841598056}
   - component: {fileID: 3536514402673644967}
   - component: {fileID: 1664620248072080242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barbarian
   m_TagString: Untagged
   m_Icon: {fileID: 0}

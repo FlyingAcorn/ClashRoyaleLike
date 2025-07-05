@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 8441155728939791827}
   - component: {fileID: 8246134382772192314}
   - component: {fileID: 386964595187867439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton_Assasin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,8 +405,7 @@ MonoBehaviour:
   myAnimator: {fileID: 8246134382772192314}
   collider: {fileID: 8660669798164936054}
   target: {fileID: 0}
-  healthBarSlider: {fileID: 0}
-  healthBarImage: {fileID: 0}
+  healthBarCanvas: {fileID: 0}
   isAlly: 0
   health: 0
   myAgent: {fileID: 7277969829571733839}

@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 3197557237111772719}
   - component: {fileID: 4865378849906683061}
   - component: {fileID: 1932400018174452465}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton_Necromancer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   - {fileID: 4976498902148402341, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
 --- !u!1 &4938061775747078987
 GameObject:
   m_ObjectHideFlags: 0

@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1334119693706932986}
   - component: {fileID: 1958319339286228908}
   - component: {fileID: 1700850485762452192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton_Minion2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

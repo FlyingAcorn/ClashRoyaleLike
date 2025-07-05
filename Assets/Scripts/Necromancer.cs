@@ -35,7 +35,8 @@ public class Necromancer : Agent
         foreach (var summon in summons)
         {
             summon.isAlly = isAlly;
-            Entity summoned = Instantiate(summon.gameObject, CheckEmptySpace(), Quaternion.identity ,EntityManager.Instance.entitiesOnMap.transform)
+            Entity summoned = Instantiate(summon.gameObject, CheckEmptySpace(), Quaternion.identity,
+                    EntityManager.Instance.entitiesOnMap.transform)
                 .GetComponent<Entity>();
             EntityManager.Instance.AddEntity(summoned);
         }
@@ -50,7 +51,7 @@ public class Necromancer : Agent
         var zPos = Random.Range(transform.position.z - entityClassType.rangeRadius * 0.5f,
             transform.position.z + entityClassType.rangeRadius * 0.5f);
         var location = new Vector3(xPos, transform.position.y, zPos);
-        while (Physics.CheckSphere(location, 1, layerMask))
+        while (!Physics.CheckSphere(location, 1, layerMask))
         {
             xPos = Random.Range(transform.position.x - entityClassType.rangeRadius * 0.5f,
                 transform.position.x + entityClassType.rangeRadius * 0.5f);

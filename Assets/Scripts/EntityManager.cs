@@ -12,8 +12,7 @@ public class EntityManager : Singleton<EntityManager>
     public GameObject entitiesOnMap; // şimdilik çözüm
     public Tower allyMainTower;
     public Tower enemyMainTower;
-    
-    
+
 
     public void AddEntity(Entity entity)
     {

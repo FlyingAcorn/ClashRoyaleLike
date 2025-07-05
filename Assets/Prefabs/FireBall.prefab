@@ -124,6 +124,9 @@ MonoBehaviour:
   myCollider: {fileID: 4461067841461112584}
   fireBallParticle: {fileID: 5709008251246335656, guid: 65e227c5c3b5f1d41af0a8c28e2fcf29, type: 3}
   radius: 6
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &7149064997500668398
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -151,7 +151,8 @@ public class GameManager : Singleton<GameManager>
             {
                 manaRegenRate = 2f;
             }
-            UIManager.Instance.inGamePanel.elapsedTime.text = string.Format("{0:00}:{1:00}",minutes,seconds);
+
+            UIManager.Instance.inGamePanel.elapsedTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             yield return null;
         }
     }

@@ -70,6 +70,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton_Minion2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1700850485762452192, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6494487275170544849, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.42
@@ -179,6 +183,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4976498902148402341, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8100602211826026908, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion (2)
@@ -252,6 +260,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4976498902148402341, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8100602211826026908, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion
@@ -288,6 +300,10 @@ PrefabInstance:
     - target: {fileID: 830014728427180747, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700850485762452192, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
+      propertyPath: isAlly
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494487275170544849, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,6 +414,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4976498902148402341, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
+      propertyPath: isAlly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8100602211826026908, guid: 5bfff07685fb2474e8858d50f1ec5c4e, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion (1)
@@ -434,6 +454,10 @@ PrefabInstance:
     - target: {fileID: 830014728427180747, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700850485762452192, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
+      propertyPath: isAlly
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494487275170544849, guid: 082cc437e70a0f543a897cb6220ff094, type: 3}
       propertyPath: m_LocalPosition.x

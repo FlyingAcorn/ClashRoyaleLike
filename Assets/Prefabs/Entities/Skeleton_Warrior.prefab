@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 8312096421040379126}
   - component: {fileID: 1837000491274582473}
   - component: {fileID: 7449018048592242554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton_Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}

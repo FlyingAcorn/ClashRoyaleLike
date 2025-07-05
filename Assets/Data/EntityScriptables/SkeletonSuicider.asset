@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SkeletonSuicider
   m_EditorClassIdentifier: 
   isFlying: 0
-  maxHealth: 100
+  isRanged: 0
+  maxHealth: 1000
   damage: 100
   attackSpeed: 0
   speed: 1.5

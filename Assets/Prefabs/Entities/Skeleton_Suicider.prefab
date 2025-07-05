@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 8099208214258320629}
   - component: {fileID: 7723631101832454068}
   - component: {fileID: 167264814504430495}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skeleton_Suicider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,6 +1092,9 @@ MonoBehaviour:
   currentBehaviour: 0
   explosionParticle: {fileID: 5709008251246335656, guid: 65e227c5c3b5f1d41af0a8c28e2fcf29, type: 3}
   explosionRadius: 6
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3891945077446622689
 GameObject:
   m_ObjectHideFlags: 0

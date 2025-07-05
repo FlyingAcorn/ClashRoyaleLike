@@ -1119,7 +1119,7 @@ GameObject:
   - component: {fileID: 3240871061142371128}
   - component: {fileID: 8343347023801242757}
   - component: {fileID: 2665628495373794146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

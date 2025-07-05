@@ -10,6 +10,8 @@ public class SkeletonSuicider : Agent
     [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private float explosionRadius;
     private Collider[] _entitiesInRange;
+    [SerializeField] private LayerMask layerMask;
+
 
     protected override void Awake()
     {
@@ -29,26 +31,26 @@ public class SkeletonSuicider : Agent
 
     public void BlowUp()
     {
-        Debug.Log("kekwwWWWWWWW");
-        var spawnedEffect =
-            Instantiate(explosionParticle, transform.position,
-                Quaternion.identity); // Fireballdakinin aynısı değiştirebilirsin obejctpooling vs olunca
-        spawnedEffect.Play();
-        var size = Physics.OverlapSphereNonAlloc(transform.position + new Vector3(0, 1, 0), explosionRadius,
-            _entitiesInRange);
-        Debug.Log(size);
-        List<Collider> desiredList = _entitiesInRange
-            .Where(c => c != null && c.isTrigger == false && c.TryGetComponent(out Entity _)).ToList();
+        Physics.OverlapSphereNonAlloc(transform.position + new Vector3(0, 1, 0), explosionRadius,
+            _entitiesInRange, layerMask, QueryTriggerInteraction.Ignore);
+        List<Collider> desiredList = _entitiesInRange.Where(c => c != null).ToList();
+        // .Where(c => c != null && c.isTrigger == false && c.TryGetComponent(out Entity _)).ToList();
         Debug.Log(desiredList.Count);
-        for (int i = 0; i < desiredList.Count; i++)
+        foreach (var t in desiredList)
         {
-            desiredList[i].TryGetComponent(out Entity entity);
-            if (entity.isAlly == isAlly) return;
-            Debug.Log(entity.transform.position + entity.name);
+            Debug.Log("anan");
+            t.TryGetComponent(out Entity entity);
+            if (entity.isAlly == isAlly) continue;
+            Debug.Log("hit" + entity.name);
             entity.Health -= entityClassType.damage;
             entity.CheckHealth();
         }
 
+        var spawnedEffect =
+            Instantiate(explosionParticle, transform.position,
+                Quaternion.identity); // Fireballdakinin aynısı değiştirebilirsin obejctpooling vs olunca
+        spawnedEffect.Play();
+        _entitiesInRange = new Collider[30];
         myAnimator.SetBool("isAttacking", false);
     }
 

@@ -27,8 +27,8 @@ public abstract class Entity : MonoBehaviour
         {
             HealthTween.Kill();
             healthBarCanvas.healthBarSlider.gameObject.SetActive(true);
-            HealthTween = healthBarCanvas.healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
             health = value > entityClassType.maxHealth ? entityClassType.maxHealth : value;
+            HealthTween = healthBarCanvas.healthBarSlider.DOValue(health / entityClassType.maxHealth, 1);
         }
     }
 
@@ -45,7 +45,9 @@ public abstract class Entity : MonoBehaviour
     {
         if (healthBarCanvas.healthBarSlider.gameObject.activeSelf)
         {
-            healthBarCanvas.transform.rotation = Quaternion.LookRotation(new Vector3(transform.position.x,CameraPos.y,CameraPos.z)-transform.position);
+            healthBarCanvas.transform.rotation =
+                Quaternion.LookRotation(
+                    new Vector3(transform.position.x, CameraPos.y, CameraPos.z) - transform.position);
         }
     }
 
