@@ -67,7 +67,6 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
         myImage.enabled = false;
         _previewModel.gameObject.transform.position = hit.point;
         _previewModel.gameObject.SetActive(true);
-        //Debug.Log(hit.point);
         if (!currentCard.cardInfo.canInvade && !hit.transform.GetComponent<PlayZone>().isAllyZone)
         {
             _previewModel.material.color = _previewModel.toRed;

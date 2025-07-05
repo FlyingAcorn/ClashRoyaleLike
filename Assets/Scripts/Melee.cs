@@ -9,11 +9,9 @@ public class Melee : Weapon
 
     public override void OnHit(Entity target)
     {
-        if (owner != _frameAgainst)
-        {
-            target.Health -= owner.entityClassType.damage;
-            _frameAgainst = owner;
-            DOVirtual.DelayedCall(0.3f, () => { _frameAgainst = null; });
-        }
+        if (owner == _frameAgainst || owner.Health > 0 == false) return;
+        target.Health -= owner.entityClassType.damage;
+        _frameAgainst = owner;
+        DOVirtual.DelayedCall(0.3f, () => { _frameAgainst = null; });
     }
 }

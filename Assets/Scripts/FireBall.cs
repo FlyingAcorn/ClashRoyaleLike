@@ -18,18 +18,15 @@ public class FireBall : Weapon
         _entitiesInRange = new Collider[30];
     }
 
-    public override void OnHit(Entity target) // beceremedin buna cozum bul
+    public override void OnHit(Entity target) // ObjectPooling ekle
     {
         Physics.OverlapSphereNonAlloc(target.transform.position, radius, _entitiesInRange, layerMask,
             QueryTriggerInteraction.Ignore);
         List<Collider> desiredList = _entitiesInRange.Where(c => c != null).ToList();
-        Debug.Log(desiredList.Count); // bunu findall cevir
         foreach (var t in desiredList)
         {
-            Debug.Log("anan");
             t.TryGetComponent(out Entity entity);
             if (entity.isAlly == owner.isAlly) continue;
-            Debug.Log("hit" + entity.name);
             entity.Health -= owner.entityClassType.damage;
             entity.CheckHealth();
         }

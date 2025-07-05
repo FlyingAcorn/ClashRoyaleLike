@@ -34,14 +34,10 @@ public class SkeletonSuicider : Agent
         Physics.OverlapSphereNonAlloc(transform.position + new Vector3(0, 1, 0), explosionRadius,
             _entitiesInRange, layerMask, QueryTriggerInteraction.Ignore);
         List<Collider> desiredList = _entitiesInRange.Where(c => c != null).ToList();
-        // .Where(c => c != null && c.isTrigger == false && c.TryGetComponent(out Entity _)).ToList();
-        Debug.Log(desiredList.Count);
         foreach (var t in desiredList)
         {
-            Debug.Log("anan");
             t.TryGetComponent(out Entity entity);
             if (entity.isAlly == isAlly) continue;
-            Debug.Log("hit" + entity.name);
             entity.Health -= entityClassType.damage;
             entity.CheckHealth();
         }

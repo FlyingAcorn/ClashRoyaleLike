@@ -59,8 +59,7 @@ public class Necromancer : Agent
                 transform.position.z + entityClassType.rangeRadius * 0.5f);
             location = new Vector3(xPos, transform.position.y, zPos);
         }
-
-        Debug.Log(location);
+        
         return location;
     }
 

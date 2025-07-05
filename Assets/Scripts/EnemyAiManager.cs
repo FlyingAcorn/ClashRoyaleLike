@@ -52,7 +52,6 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
             //basit sistem benim zoneda düşman varmı(canı azmı),invade edebiliyormuyum,menzillimiyim
             //gibi sorularla konumu ayarlayacak (düşman üstüne düşman kuleye yada node cevresine gibi)
             StartCoroutine(SelectPosition());
-            Debug.Log(chosenCard.name);
         }
 
         if (newState == AiState.Play)
@@ -62,7 +61,8 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
                 t.isAlly = false;
             }
 
-            Instantiate(chosenCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.entitiesOnMap.transform);
+            Instantiate(chosenCard, _pointOfSummon, Quaternion.identity,
+                EntityManager.Instance.entitiesOnMap.transform);
             GameManager.Instance.EnemyMana -= chosenCard.cardInfo.mana;
             GameManager.Instance.enemyDeck.Remove(chosenCard);
             GameManager.Instance.enemyPlayedCards.Add(chosenCard);
