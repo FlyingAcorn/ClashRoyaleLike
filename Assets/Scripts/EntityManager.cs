@@ -9,6 +9,8 @@ public class EntityManager : Singleton<EntityManager>
 {
     public List<Entity> allies;
     public List<Entity> enemies;
+    public GameObject entitiesOnMap; // şimdilik çözüm
+    
 
     public void AddEntity(Entity entity)
     {
@@ -30,7 +32,7 @@ public class EntityManager : Singleton<EntityManager>
 
     public void InitialSort() // state play olmadan once yapmak lazım yoksa 5 ten sonra empty alıyor.
     {
-        var list = GetComponentsInChildren<Entity>().ToList();
+        var list = entitiesOnMap.GetComponentsInChildren<Entity>().ToList();
         allies.AddRange(list.Select(c => c).Where(c => c.isAlly));
         enemies.AddRange(list.Select(c => c).Where(c => !c.isAlly));
     }

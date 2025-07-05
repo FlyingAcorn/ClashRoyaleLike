@@ -117,8 +117,7 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
         {
             t.isAlly = true;
         }
-
-        Instantiate(currentCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
+        Instantiate(currentCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.entitiesOnMap.transform);
         GameManager.Instance.AlliedMana -= currentCard.cardInfo.mana;
         GameManager.Instance.alliedDeck.Remove(currentCard);
         GameManager.Instance.allyPlayedCards.Add(currentCard);

@@ -35,7 +35,7 @@ public class Necromancer : Agent
         foreach (var summon in summons)
         {
             summon.isAlly = isAlly;
-            Entity summoned = Instantiate(summon.gameObject, CheckEmptySpace(), Quaternion.identity)
+            Entity summoned = Instantiate(summon.gameObject, CheckEmptySpace(), Quaternion.identity ,EntityManager.Instance.entitiesOnMap.transform)
                 .GetComponent<Entity>();
             EntityManager.Instance.AddEntity(summoned);
         }

@@ -62,7 +62,7 @@ public class EnemyAiManager : Singleton<EnemyAiManager>
                 t.isAlly = false;
             }
 
-            Instantiate(chosenCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.transform);
+            Instantiate(chosenCard, _pointOfSummon, Quaternion.identity, EntityManager.Instance.entitiesOnMap.transform);
             GameManager.Instance.EnemyMana -= chosenCard.cardInfo.mana;
             GameManager.Instance.enemyDeck.Remove(chosenCard);
             GameManager.Instance.enemyPlayedCards.Add(chosenCard);
