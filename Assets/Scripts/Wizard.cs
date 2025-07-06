@@ -1,10 +1,10 @@
 using System.Collections;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
 public class Wizard : Agent
 {
-    [SerializeField] private Weapon projectile;
     private Entity _attackTarget;
     private float _attackTargetColliderOffset;
     private Vector3 _attackTargetPos;
@@ -32,8 +32,11 @@ public class Wizard : Agent
 
     public void Shoot() // animEvent
     {
-        var fireball = Instantiate(projectile, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        var fireball = EntityManager.Instance.fireballPool.First();
+        EntityManager.Instance.fireballPool.Remove(fireball);
+        fireball.gameObject.SetActive(true);
         fireball.owner = this;
+        fireball.transform.position = transform.position + new Vector3(0, 1, 0);
         var time = FindClosestTarget() / 30; // 20 is speedper pixel
         var targetsPos = _attackTargetPos;
         fireball.transform.DOMove(targetsPos + new Vector3(0, 1, 0), time).OnComplete(() =>

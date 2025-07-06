@@ -1882,8 +1882,15 @@ MonoBehaviour:
   allies: []
   enemies: []
   entitiesOnMap: {fileID: 422329425}
+  pooledObj: {fileID: 2051532532}
   allyMainTower: {fileID: 7619194197101576236}
   enemyMainTower: {fileID: 8904777133148455404}
+  arrowPool:
+  - {fileID: -5510668088678675363, guid: 7cfd556695a2279488565049d03fb64f, type: 3}
+  fireballPool:
+  - {fileID: 8552730197247964740, guid: cc7fcd4ceedb39a4a83809c5b3daf2b9, type: 3}
+  explosionSfxPool:
+  - {fileID: 6496483700582739086, guid: 65e227c5c3b5f1d41af0a8c28e2fcf29, type: 3}
 --- !u!4 &582076505
 Transform:
   m_ObjectHideFlags: 0
@@ -3639,6 +3646,7 @@ Transform:
   - {fileID: 293037182}
   - {fileID: 1997772808}
   - {fileID: 422329426}
+  - {fileID: 2051532533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1843461244 stripped
@@ -4130,6 +4138,37 @@ MonoBehaviour:
   infoText: {fileID: 1855157153}
   myImage: {fileID: 2001228264}
   myManaText: {fileID: 246222587}
+--- !u!1 &2051532532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051532533}
+  m_Layer: 0
+  m_Name: PooledObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2051532533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051532532}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1826781442}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2076717589
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,17 +31,17 @@ public class FireBall : Weapon
             entity.CheckHealth();
         }
 
-        var spawnedEffect =
-            Instantiate(fireBallParticle, target.transform.position,
-                Quaternion.identity); // wizard owner atadığında particle effect child objesi yok oluyor.
-        spawnedEffect.Play();
+        var spawnedEffect = EntityManager.Instance.explosionSfxPool.First();
+        EntityManager.Instance.explosionSfxPool.Remove(spawnedEffect);
+        spawnedEffect.gameObject.SetActive(true);
+        spawnedEffect.transform.position = transform.position;
+        spawnedEffect.GetComponent<ParticleSystem>().Play();
         gameObject.SetActive(false);
         _entitiesInRange = new Collider[30];
-        //Destroy(gameObject);
     }
 
-    /*private void OnDrawGizmos()
+    private void OnDisable()
     {
-        Gizmos.DrawWireSphere(transform.position,radius);
-    }*/
+        EntityManager.Instance.fireballPool.Add(this);
+    }
 }

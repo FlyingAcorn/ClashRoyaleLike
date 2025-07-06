@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class SkeletonSuicider : Agent
 {
-    [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private float explosionRadius;
     private Collider[] _entitiesInRange;
     [SerializeField] private LayerMask layerMask;
@@ -42,10 +41,11 @@ public class SkeletonSuicider : Agent
             entity.CheckHealth();
         }
 
-        var spawnedEffect =
-            Instantiate(explosionParticle, transform.position,
-                Quaternion.identity); // Fireballdakinin aynısı değiştirebilirsin obejctpooling vs olunca
-        spawnedEffect.Play();
+        var spawnedEffect = EntityManager.Instance.explosionSfxPool.First();
+        EntityManager.Instance.explosionSfxPool.Remove(spawnedEffect);
+        spawnedEffect.gameObject.SetActive(true);
+        spawnedEffect.transform.position = transform.position;
+        spawnedEffect.GetComponent<ParticleSystem>().Play();
         _entitiesInRange = new Collider[30];
         myAnimator.SetBool("isAttacking", false);
     }

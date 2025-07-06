@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -9,6 +10,10 @@ public class Arrow : Weapon
     {
         target.Health -= owner.entityClassType.damage;
         gameObject.SetActive(false);
-        //Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        EntityManager.Instance.arrowPool.Add(this);
     }
 }

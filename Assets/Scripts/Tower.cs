@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -113,9 +114,12 @@ public class Tower : Entity
         _attackTargetPos = target.transform.position;
         var direction =
             _attackTargetPos - transform.position + new Vector3(0, 10, 0); // y değeri offset
-        var arrow = Instantiate(projectile, transform.position + new Vector3(0, 5, 0),
-            Quaternion.LookRotation(direction));
+        var arrow = EntityManager.Instance.arrowPool.First();
+        EntityManager.Instance.arrowPool.Remove(arrow);
+        arrow.gameObject.SetActive(true);
         arrow.owner = this;
+        arrow.transform.position = transform.position + new Vector3(0, 5, 0);
+        arrow.transform.LookAt(direction);
         var time = FindClosestTarget() / 20; // 20 is speedper pixel
         var _targetsPos = _attackTargetPos;
         arrow.transform.DOMove(_targetsPos + new Vector3(0, 1, 0), time).OnComplete(() =>
