@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHandler
+public class UiCard : MonoBehaviour
 {
     public Card currentCard;
     [SerializeField] private Canvas myCanvas;
@@ -41,17 +41,17 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
         _rotation = myTransform.localRotation;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag()
     {
         _previewModel = Instantiate(currentCard.cardInfo.previewModel);
         _previewModel.gameObject.SetActive(false);
         infoText.gameObject.SetActive(true);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(Touch eventData)
     {
         _canSummon = false;
-        myTransform.anchoredPosition += eventData.delta / myCanvas.scaleFactor;
+        myTransform.anchoredPosition += eventData.deltaPosition / myCanvas.scaleFactor;
         infoText.gameObject.transform.position = eventData.position + new Vector2(0, 125);
         Ray ray = GameManager.Instance.mainCamera.ScreenPointToRay(eventData.position);
         if (!Physics.Raycast(ray, out var hit, 100, mask))
@@ -89,7 +89,12 @@ public class UiCard : MonoBehaviour, IEndDragHandler, IBeginDragHandler, IDragHa
         }
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void ClickEvent()
+    {
+        InputManager.Instance.selectedUiCard = this;
+    }
+
+    public void OnEndDrag()
     {
         myManaText.enabled = true;
         myTransform.localPosition = _localPosition;
