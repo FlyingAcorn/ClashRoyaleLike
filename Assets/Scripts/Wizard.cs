@@ -32,11 +32,8 @@ public class Wizard : Agent
 
     public void Shoot() // animEvent
     {
-        var fireball = EntityManager.Instance.fireballPool.First();
-        EntityManager.Instance.fireballPool.Remove(fireball);
-        fireball.gameObject.SetActive(true);
+        var fireball = PoolManager.Instance.fireBallPool.Pull(transform.position + new Vector3(0, 1, 0));
         fireball.owner = this;
-        fireball.transform.position = transform.position + new Vector3(0, 1, 0);
         var time = FindClosestTarget() / 30; // 20 is speedper pixel
         var targetsPos = _attackTargetPos;
         fireball.transform.DOMove(targetsPos + new Vector3(0, 1, 0), time).OnComplete(() =>

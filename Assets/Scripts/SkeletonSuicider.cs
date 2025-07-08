@@ -41,11 +41,8 @@ public class SkeletonSuicider : Agent
             entity.CheckHealth();
         }
 
-        var spawnedEffect = EntityManager.Instance.explosionSfxPool.First();
-        EntityManager.Instance.explosionSfxPool.Remove(spawnedEffect);
+        var spawnedEffect = PoolManager.Instance.explosionSfxPool.Pull(transform.position);
         spawnedEffect.gameObject.SetActive(true);
-        spawnedEffect.transform.position = transform.position;
-        spawnedEffect.GetComponent<ParticleSystem>().Play();
         _entitiesInRange = new Collider[30];
         myAnimator.SetBool("isAttacking", false);
     }

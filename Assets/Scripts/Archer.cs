@@ -34,11 +34,8 @@ public class Archer : Agent
     public void Shoot() // animEvent
     {
         var direction = _attackTargetPos - transform.position + new Vector3(0, 10, 0); // y değeri offset
-        var arrow = EntityManager.Instance.arrowPool.First();
-        EntityManager.Instance.arrowPool.Remove(arrow);
-        arrow.gameObject.SetActive(true);
+        var arrow = PoolManager.Instance.arrowPool.Pull(transform.position + new Vector3(0, 1, 0));
         arrow.owner = this;
-        arrow.transform.position = transform.position + new Vector3(0, 1, 0);
         arrow.transform.LookAt(direction);
         var time = FindClosestTarget() / 30; // 20 is speedper pixel
         var targetsPos = _attackTargetPos;

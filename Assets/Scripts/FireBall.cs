@@ -5,8 +5,9 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
-public class FireBall : Weapon
+public class FireBall : Weapon, IPoolable<FireBall>
 {
+    private Action<FireBall> returnToPool;
     [SerializeField] private ParticleSystem fireBallParticle;
     [SerializeField] private float radius;
     private Collider[] _entitiesInRange;
@@ -31,17 +32,23 @@ public class FireBall : Weapon
             entity.CheckHealth();
         }
 
-        var spawnedEffect = EntityManager.Instance.explosionSfxPool.First();
-        EntityManager.Instance.explosionSfxPool.Remove(spawnedEffect);
-        spawnedEffect.gameObject.SetActive(true);
-        spawnedEffect.transform.position = transform.position;
-        spawnedEffect.GetComponent<ParticleSystem>().Play();
+        var spawnedEffect = PoolManager.Instance.explosionSfxPool.Pull(transform.position);
         gameObject.SetActive(false);
         _entitiesInRange = new Collider[30];
     }
 
     private void OnDisable()
     {
-        EntityManager.Instance.fireballPool.Add(this);
+        ReturnToPool();
+    }
+
+    public void Initialize(Action<FireBall> returnAction)
+    {
+        returnToPool = returnAction;
+    }
+
+    public void ReturnToPool()
+    {
+        returnToPool?.Invoke(this);
     }
 }

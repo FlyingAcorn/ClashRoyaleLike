@@ -13,9 +13,6 @@ public class EntityManager : Singleton<EntityManager>
     [SerializeField] private GameObject pooledObj;
     public Tower allyMainTower;
     public Tower enemyMainTower;
-    public List<Arrow> arrowPool;
-    public List<FireBall> fireballPool;
-    public List<ExplosionSfx> explosionSfxPool;
 
 
     public void AddEntity(Entity entity)
@@ -34,9 +31,6 @@ public class EntityManager : Singleton<EntityManager>
     {
         base.Awake();
         InitialSort();
-        FillPools(arrowPool, 30);
-        FillPools(fireballPool, 10);
-        FillPools(explosionSfxPool, 10);
     }
 
     public void InitialSort() // state play olmadan once yapmak lazım yoksa 5 ten sonra empty alıyor.
@@ -44,17 +38,5 @@ public class EntityManager : Singleton<EntityManager>
         var list = entitiesOnMap.GetComponentsInChildren<Entity>().ToList();
         allies.AddRange(list.Select(c => c).Where(c => c.isAlly));
         enemies.AddRange(list.Select(c => c).Where(c => !c.isAlly));
-    }
-
-    private void FillPools<T>(List<T> list, int duplication) where T : Object
-    {
-        var firstObj = list[0];
-        for (int i = 0; i < duplication; i++)
-        {
-            var duplicate = Instantiate(firstObj, pooledObj.transform);
-            list.Add(duplicate);
-        }
-
-        list.Remove(firstObj);
     }
 }
