@@ -18,5 +18,4 @@ MonoBehaviour:
   damage: 50
   attackSpeed: 5
   speed: 1
-  rangeRadius: 8
-  mana: 4
+  rangeRadius: 7
